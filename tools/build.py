@@ -37,7 +37,7 @@ T = {
   "class_wiki": "Клас у вікі", "fighter": "Воїн", "mage": "Маг",
   "key_skills": "Ключові вміння", "key_note": "Атакувальні вміння на рівнях до 84 · сила без модифікації",
   "k_skill": "Вміння", "k_hits": "Ударів", "k_targets": "Цілі", "k_cd": "Відкат", "k_mp": "MP", "k_book": "Книга",
-  "k_power": "Сила", "spam": "спам-удар", "replaces": "замінює звичайний удар після книги",
+  "k_power": "Сила", "k_pve": "Сила в PvE", "spam": "спам-удар", "replaces": "замінює звичайний удар після книги",
   "order": "Книги для класу", "order_note": "Усе, що потребує книг 1★–3★ до 84 рівня. Безкоштовні джерела до 26.11 проти потреби класу.",
   "have_of": "є {h} з {n}", "g1": "1★ Покращена", "g2": "2★ Виняткова", "g3": "3★ Рідкісна",
   "src1": "Джерела: календар 13.11 і 24.11, 78 рівень, Вежа (5 пов., Складна), рефералка",
@@ -53,7 +53,7 @@ T = {
   "no_meas_short": "Немає замірів. Початок — 06.11.",
   "cmp_title": "Порівняння класів", "cmp_intro": "Вибери до трьох класів. Сила вмінь — з вікі на рівнях до 84, заміри — з ОБТ.",
   "cmp_pick": "Клас {n}", "cmp_skills": "Вміння на стадії 1", "cmp_race": "Раса", "cmp_spam": "Спам-удар",
-  "cmp_pps": "Сила за 1 с", "cmp_aoe": "Найсильніший AoE", "cmp_mp": "MP за спам-удар", "cmp_books": "Книги 1★ / 2★ / 3★",
+  "cmp_pps": "Сила за 1 с (PvE)", "cmp_aoe": "Найсильніший AoE", "cmp_mp": "MP за спам-удар", "cmp_books": "Книги 1★ / 2★ / 3★",
   "cmp_mix": "Порівнюєш мага з воїном: сила маг. і фіз. умінь рахується по-різному, порівнюй усередині типу.",
   "cmp_meas": "Заміри на споті", "cmp_spot": "Спот", "targets_n": "{n} цілей",
   "zones_page": "Локації", "spots": "Споти для замірів", "sp_code": "Код", "sp_type": "Що перевіряє",
@@ -87,7 +87,7 @@ T = {
   "class_wiki": "Class on the wiki", "fighter": "Fighter", "mage": "Mage",
   "key_skills": "Key skills", "key_note": "Attack skills at levels up to 84 · power without modification",
   "k_skill": "Skill", "k_hits": "Hits", "k_targets": "Targets", "k_cd": "Cooldown", "k_mp": "MP", "k_book": "Book",
-  "k_power": "Power", "spam": "spam skill", "replaces": "replaces the base skill after the book",
+  "k_power": "Power", "k_pve": "PvE power", "spam": "spam skill", "replaces": "replaces the base skill after the book",
   "order": "Books for the class", "order_note": "Everything that needs 1★–3★ books up to level 84. Free sources until 26.11 vs. what the class needs.",
   "have_of": "{h} of {n} available", "g1": "1★ Improved", "g2": "2★ Exceptional", "g3": "3★ Rare",
   "src1": "Sources: calendar 13.11 and 24.11, level 78, Tower (floor 5, Hard), referrals",
@@ -103,7 +103,7 @@ T = {
   "no_meas_short": "No measurements yet. Start — 06.11.",
   "cmp_title": "Compare classes", "cmp_intro": "Pick up to three classes. Skill power is from the wiki at levels up to 84; measurements come from the OBT.",
   "cmp_pick": "Class {n}", "cmp_skills": "Skills in stage 1", "cmp_race": "Race", "cmp_spam": "Spam skill",
-  "cmp_pps": "Power per second", "cmp_aoe": "Strongest AoE", "cmp_mp": "MP per spam skill", "cmp_books": "Books 1★ / 2★ / 3★",
+  "cmp_pps": "Power per second (PvE)", "cmp_aoe": "Strongest AoE", "cmp_mp": "MP per spam skill", "cmp_books": "Books 1★ / 2★ / 3★",
   "cmp_mix": "You are comparing a mage with a fighter: magic and physical power scale differently, so compare within one type.",
   "cmp_meas": "Measurements on a spot", "cmp_spot": "Spot", "targets_n": "{n} targets",
   "zones_page": "Zones", "spots": "Measurement spots", "sp_code": "Code", "sp_type": "What it tests",
@@ -137,7 +137,7 @@ T = {
   "class_wiki": "Класс в вики", "fighter": "Воин", "mage": "Маг",
   "key_skills": "Ключевые умения", "key_note": "Атакующие умения на уровнях до 84 · сила без модификации",
   "k_skill": "Умение", "k_hits": "Ударов", "k_targets": "Цели", "k_cd": "Откат", "k_mp": "MP", "k_book": "Книга",
-  "k_power": "Сила", "spam": "спам-удар", "replaces": "заменяет обычный удар после книги",
+  "k_power": "Сила", "k_pve": "Сила в PvE", "spam": "спам-удар", "replaces": "заменяет обычный удар после книги",
   "order": "Книги для класса", "order_note": "Всё, что требует книг 1★–3★ до 84 уровня. Бесплатные источники до 26.11 против потребности класса.",
   "have_of": "есть {h} из {n}", "g1": "1★ Улучшенная", "g2": "2★ Исключительная", "g3": "3★ Редкая",
   "src1": "Источники: календарь 13.11 и 24.11, 78 уровень, Башня (5 эт., Сложная), рефералка",
@@ -153,7 +153,7 @@ T = {
   "no_meas_short": "Замеров нет. Начало — 06.11.",
   "cmp_title": "Сравнение классов", "cmp_intro": "Выбери до трёх классов. Сила умений — из вики на уровнях до 84, замеры — с ОБТ.",
   "cmp_pick": "Класс {n}", "cmp_skills": "Умения на стадии 1", "cmp_race": "Раса", "cmp_spam": "Спам-удар",
-  "cmp_pps": "Сила за 1 с", "cmp_aoe": "Сильнейший AoE", "cmp_mp": "MP за спам-удар", "cmp_books": "Книги 1★ / 2★ / 3★",
+  "cmp_pps": "Сила за 1 с (PvE)", "cmp_aoe": "Сильнейший AoE", "cmp_mp": "MP за спам-удар", "cmp_books": "Книги 1★ / 2★ / 3★",
   "cmp_mix": "Сравниваешь мага с воином: сила маг. и физ. умений считается по-разному, сравнивай внутри типа.",
   "cmp_meas": "Замеры на споте", "cmp_spot": "Спот", "targets_n": "{n} целей",
   "zones_page": "Локации", "spots": "Споты для замеров", "sp_code": "Код", "sp_type": "Что проверяет",
@@ -418,16 +418,16 @@ def class_page(lang, c):
     spam = c.get("spam") or {}
     key_names = {k["name"]["ru"] for k in c["key"]}
     if spam and spam.get("name") and spam["name"] not in key_names:
-        rows.append(f"""<tr><td><div class="skill">{sk_icon(rel, spam.get('icon'))}<div><b>{e(spam.get('names', {}).get(lang, spam['name']))}</b><small>{t['spam']} · {t['replaces']}</small></div></div></td>
-<td class="num">{num(spam.get('pw'), lang)}</td><td class="num gold">{spam.get('h', '—')}</td><td class="c2">{spam.get('lim') or 1}</td><td class="c2">{secs((spam.get('cd') or 0) * 1000, lang)}</td><td class="num c2">{spam.get('mp') or '—'}</td><td>—</td></tr>""")
+        rows.append(f"""<tr><td><div class="skill">{sk_icon(rel, spam.get('icon'))}<div><b>{e(spam.get('names', {}).get(lang, spam['name']))}</b><small>{t['spam']}{(' · ' + e(spam['via'][lang])) if spam.get('via') else ''}</small></div></div></td>
+<td class="num">{num(spam.get('pw'), lang)}</td><td class="num">{num(spam.get('pw'), lang)}</td><td class="num gold">{spam.get('h', '—')}</td><td class="c2">{spam.get('lim') or 1}</td><td class="c2">{secs((spam.get('cd') or 0) * 1000, lang)}</td><td class="num c2">{spam.get('mp') or '—'}</td><td>{grade_badge(spam.get('book'))}</td></tr>""")
     for k in c["key"]:
         is_spam = spam.get("name") == k["name"]["ru"]
         note = (t["spam"] + " · " if is_spam else "") + f'{t["lvl"]} {k["level"]}/{k["top"]}'
         rows.append(f"""<tr><td><div class="skill">{sk_icon(rel, k['icon'])}<div><b>{e(k['name'][lang])}</b><small>{note}</small></div></div></td>
-<td class="num">{num(k['power'], lang)}</td><td class="num gold">{k['hits']}</td><td class="c2">{k['targets'] or '—'}</td><td class="c2">{secs(k['cd'], lang)}</td><td class="num c2">{k['mp'] or '—'}</td><td>{grade_badge(k['grade'])}</td></tr>""")
+<td class="num">{num(k['power'], lang)}</td><td class="num">{num(k.get('pve') or k['power'], lang)}</td><td class="num gold">{k['hits']}</td><td class="c2">{k['targets'] or '—'}</td><td class="c2">{secs(k['cd'], lang)}</td><td class="num c2">{k['mp'] or '—'}</td><td>{grade_badge(k['grade'])}</td></tr>""")
     skills = f"""<section class="panel" aria-labelledby="skills"><h2 id="skills">{t['key_skills']}</h2>
 <p class="muted small" style="margin:4px 0 16px">{t['key_note']}</p>
-<div class="tbl-wrap"><table style="min-width:700px"><thead><tr><th>{t['k_skill']}</th><th class="num">{t['k_power']}</th><th class="num">{t['k_hits']}</th><th>{t['k_targets']}</th><th>{t['k_cd']}</th><th class="num">{t['k_mp']}</th><th>{t['k_book']}</th></tr></thead>
+<div class="tbl-wrap"><table style="min-width:700px"><thead><tr><th>{t['k_skill']}</th><th class="num">{t['k_power']}</th><th class="num">{t['k_pve']}</th><th class="num">{t['k_hits']}</th><th>{t['k_targets']}</th><th>{t['k_cd']}</th><th class="num">{t['k_mp']}</th><th>{t['k_book']}</th></tr></thead>
 <tbody>{"".join(rows)}</tbody></table></div></section>"""
 
     # books

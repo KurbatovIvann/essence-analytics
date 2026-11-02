@@ -45,16 +45,54 @@ def clean(html):
 
 def power_hits(desc):
     d = clean(desc)
-    m = re.search(r"Мощность ([\d ]+)", d)
+    # ignore the form/upgrade variants described after the base skill (wolf form, skill upgrades)
+    d = re.split(r"При обращении в волка|Улучшение умения", d)[0]
+    m = re.search(r"(?:Мощность|мощностью) ([\d ]+)", d)
     pw = int(m.group(1).replace(" ", "")) if m else None
     hits = 1
     m2 = re.search(r"(\d) раза|дважды|Трижды|трижды", d)
     if m2:
         t = m2.group(0).lower()
         hits = 2 if t == "дважды" else 3 if t == "трижды" else int(m2.group(1))
-    m3 = re.search(r"В PvE: атакует не более (\d+) цел", d)
+    m3 = re.search(r"PvE: (?:атакует не более|атакует до|максимум|макс\.) (\d+) цел", d, re.I)
     lim = int(m3.group(1)) if m3 else None
-    return pw, hits, lim
+    m4 = re.search(r"В PvE: мощность ([\d ]+)", d)
+    pve = int(m4.group(1).replace(" ", "")) if m4 else None
+    return pw, hits, lim, pve
+
+
+NAMED_OK = ("Восстановление", "Убийца Драконов", "Славный Воин", "Божественное", "Красок", "Оседлать", "Белый Страж")
+COND = re.compile(r"(Нельзя использовать[^.\n]*|Можно использовать[^.\n]*|Доступно[^.\n]*|Требуется изученное умение[^.\n]*)")
+
+
+def named_book(s, lv):
+    """Skill learned from a named book (clan shop / 4★–5★ sources) — not obtainable in stage 1."""
+    for l in lv:
+        for it in l.get("items") or []:
+            n = it["main"]["name"]
+            if (n.startswith("Книга Заклинаний -") or n.startswith("Героическое")) and not any(k in n for k in NAMED_OK):
+                return True
+    return False
+
+
+def stage1_sets(skills):
+    """(available ids, unavailable names) for one class at the stage-1 cap."""
+    bad_names = set()
+    for s in skills:
+        lv = [l for l in s["levels"] if l["charLevel"] <= CAP]
+        if not lv or s["grade"] >= 4 or named_book(s, lv):
+            bad_names.add(s["name"])
+    stems = {n.split()[0][:6] for n in bad_names if len(n.split()[0]) >= 4}
+    ok = set()
+    for s in skills:
+        lv = [l for l in s["levels"] if l["charLevel"] <= CAP]
+        if not lv or s["name"] in bad_names:
+            continue
+        conds = COND.findall(clean(lv[-1]["desc"]))
+        if any(st in c for c in conds for st in stems):
+            continue  # needs a transformation / buff that comes from a 4★–5★ skill
+        ok.add(s["id"])
+    return ok, bad_names
 
 
 def icon_name(url):
@@ -103,9 +141,10 @@ def main():
                     "ru": sk_names["ru"].get(sid, fallback)}
 
         key, books = [], {1: [], 2: [], 3: []}
+        avail, unavailable = stage1_sets(ua["skills"])
         for s in ua["skills"]:
             lv = [l for l in s["levels"] if l["charLevel"] <= CAP]
-            if not lv:
+            if not lv or s["id"] not in avail:
                 continue
             # books needed up to the cap
             for l in lv:
@@ -121,7 +160,7 @@ def main():
             L = lv[-1]
             if L["charLevel"] < 70:  # stopped levelling long before the cap — not a real stage-1 skill
                 continue
-            pw, hits, lim = power_hits(L["desc"])
+            pw, hits, lim, pve = power_hits(L["desc"])
             if not pw:
                 continue
             tip = None
@@ -136,7 +175,7 @@ def main():
             key.append({
                 "id": s["id"], "name": nm(s["id"], s["name"]), "icon": icon_name(s["icon"]),
                 "grade": max(l["grade"] or 0 for l in lv), "level": L["level"], "top": s["topLevel"],
-                "power": pw, "hits": hits,
+                "power": pw, "pve": pve, "hits": hits,
                 "targets": lim or tg.get("limit") or (1 if tg.get("shape") == "single" else None),
                 "cd": (tip or {}).get("reuseDelay"), "mp": (tip or {}).get("mpConsume"),
                 "ore": ((tip or {}).get("consume") or {}).get("count") if isinstance((tip or {}).get("consume"), dict) else None,
@@ -160,6 +199,10 @@ def main():
             "books": {str(g): books[g] for g in books},
             "bookCount": {str(g): sum(b["count"] for b in books[g]) for g in books},
         }
+        c["excluded"] = sorted(n for n in {sk["name"] for sk in ua["skills"]
+                                           if sk["kind"] == "active" and sk["category"] == "attack"
+                                           and any(l["charLevel"] <= CAP for l in sk["levels"])
+                                           and sk["id"] not in avail})
         if slug in cmp:
             # names in the seed are the wiki's RU skill names; localise them via skill ids
             idx = {l: {} for l in d}
@@ -190,6 +233,13 @@ def main():
                     icons.add(idx["ua"][sid][1])
                 else:
                     v["names"] = {l: v["name"] for l in d}
+                if k == "spam":
+                    for sk in ua["skills"]:
+                        lv = [l for l in sk["levels"] if l["charLevel"] <= CAP]
+                        if sk["id"] in avail and lv and 1 <= sk["grade"] <= 3 and ("→ " + v["name"]) in clean(lv[-1]["desc"]):
+                            v["book"] = sk["grade"]
+                            v["via"] = {l: sk_names[l].get(sk["id"], sk["name"]) for l in d}
+                            break
                 c[k] = v
         classes.append(c)
 

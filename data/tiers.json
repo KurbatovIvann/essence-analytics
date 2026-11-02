@@ -35,17 +35,17 @@
       [
        "ghost_sentinel",
        {
-        "ua": "Той самий постріл + AoE на 8 цілей",
-        "en": "Same shot + 8-target AoE",
-        "ru": "Тот же выстрел + AoE на 8 целей"
+        "ua": "Смертельний Постріл 14,5 тис. за 1 с, лук",
+        "en": "Lethal Shot 14.5k per second, bow",
+        "ru": "Смертельный Выстрел 14,5 тыс. за 1 с, лук"
        }
       ],
       [
        "moonlight_sentinel",
        {
-        "ua": "Той самий постріл, найкомфортніший автобій",
-        "en": "Same shot, the most comfortable auto-hunt",
-        "ru": "Тот же выстрел, самый комфортный автобой"
+        "ua": "Смертельний Постріл 14,5 тис. за 1 с, лук",
+        "en": "Lethal Shot 14.5k per second, bow",
+        "ru": "Смертельный Выстрел 14,5 тыс. за 1 с, лук"
        }
       ]
      ]
@@ -56,9 +56,9 @@
       [
        "werewolf_3",
        {
-        "ua": "Прямий Удар 2 удари кожні 0,5 с — найсильніший мілі",
-        "en": "Direct Strike: 2 hits every 0.5 s — strongest melee",
-        "ru": "Прямой Удар 2 удара каждые 0,5 с — сильнейший мили"
+        "ua": "Прямий Удар 5,4 тис. з відкатом 0,5 с",
+        "en": "Direct Strike 5.4k on a 0.5 s cooldown",
+        "ru": "Прямой Удар 5,4 тыс. с откатом 0,5 с"
        }
       ],
       [
@@ -80,17 +80,17 @@
       [
        "trickster",
        {
-        "ua": "Дальній, сильні AoE з відкатом 15 с",
-        "en": "Ranged, strong AoE on 15 s cooldowns",
-        "ru": "Дальник, сильные AoE с откатом 15 с"
+        "ua": "Спам-удар 6,9 тис. за 1 с, AoE на 8 цілей",
+        "en": "Spam skill 6.9k per second, 8-target AoE",
+        "ru": "Спам-удар 6,9 тыс. за 1 с, AoE на 8 целей"
        }
       ],
       [
        "dreadnought",
        {
-        "ua": "Живучий, AoE з відкатом 3 с",
-        "en": "Durable, AoE on a 3 s cooldown",
-        "ru": "Живучий, AoE с откатом 3 с"
+        "ua": "AoE на 4 цілі з відкатом 3 с",
+        "en": "4-target AoE on a 3 s cooldown",
+        "ru": "AoE на 4 цели с откатом 3 с"
        }
       ]
      ]
@@ -101,25 +101,25 @@
       [
        "titan",
        {
-        "ua": "AoE на 12 цілей, але одна ціль слабша",
-        "en": "12-target AoE, weaker on a single target",
-        "ru": "AoE на 12 целей, но по одной цели слабее"
+        "ua": "AoE на 12 цілей з відкатом 5 с",
+        "en": "12-target AoE on a 5 s cooldown",
+        "ru": "AoE на 12 целей с откатом 5 с"
        }
       ],
       [
        "grand_khavatari",
        {
-        "ua": "Середня шкода, AoE з відкатом 3 с",
-        "en": "Average damage, AoE on a 3 s cooldown",
-        "ru": "Средний урон, AoE с откатом 3 с"
+        "ua": "AoE на 5 цілей з відкатом 3 с",
+        "en": "5-target AoE on a 3 s cooldown",
+        "ru": "AoE на 5 целей с откатом 3 с"
        }
       ],
       [
        "maestro",
        {
-        "ua": "AoE без руди, живучий",
-        "en": "AoE without ore, durable",
-        "ru": "AoE без руды, живучий"
+        "ua": "AoE на 5 цілей з відкатом 3 с",
+        "en": "5-target AoE on a 3 s cooldown",
+        "ru": "AoE на 5 целей с откатом 3 с"
        }
       ],
       [
@@ -146,33 +146,33 @@
       [
        "mystic_muse",
        {
-        "ua": "Маги без модів фармлять повільно",
-        "en": "Mages farm slowly without mods",
-        "ru": "Маги без модов фармят медленно"
+        "ua": "AoE на 6 цілей з відкатом 7 с",
+        "en": "6-target AoE on a 7 s cooldown",
+        "ru": "AoE на 6 целей с откатом 7 с"
        }
       ],
       [
        "crow_3",
        {
-        "ua": "Слабкий спам-удар до 85 рівня",
-        "en": "Weak spam skill before level 85",
-        "ru": "Слабый спам-удар до 85 уровня"
+        "ua": "Спам-удар 5,2 тис. за 1 с; Знамение — лише книга 5★",
+        "en": "Spam skill 5.2k per second; Omen needs a 5★ book",
+        "ru": "Спам-удар 5,2 тыс. за 1 с; Знамение — только книга 5★"
        }
       ],
       [
        "adventurer",
        {
-        "ua": "Даггери: 5,5 тис. за 1 с, потрібна спина",
-        "en": "Daggers: 5.5k per second, need the back",
-        "ru": "Даггеры: 5,5 тыс. за 1 с, нужна спина"
+        "ua": "Спам-удар 5,5 тис. за 1 с",
+        "en": "Spam skill 5.5k per second",
+        "ru": "Спам-удар 5,5 тыс. за 1 с"
        }
       ],
       [
        "rose_vain_3",
        {
-        "ua": "Шкода через дебафи, повільно на одну ціль",
-        "en": "Damage through debuffs, slow on a single target",
-        "ru": "Урон через дебаффы, медленно по одной цели"
+        "ua": "AoE на 3–5 цілей з відкатом 15–90 с",
+        "en": "AoE on 3–5 targets, 15–90 s cooldowns",
+        "ru": "AoE на 3–5 целей с откатом 15–90 с"
        }
       ]
      ]
@@ -258,9 +258,9 @@
       [
        "spectral_master",
        {
-        "ua": "Анти-хіл −95%, параліч",
-        "en": "−95% healing, paralysis",
-        "ru": "Анти-хил −95%, паралич"
+        "ua": "Параліч, −95% вампіризму цілі",
+        "en": "Paralysis, −95% target HP drain",
+        "ru": "Паралич, −95% вампиризма цели"
        }
       ]
      ]
@@ -271,9 +271,9 @@
       [
        "crow_3",
        {
-        "ua": "Без Знамения до 85 рівня",
-        "en": "No Omen until level 85",
-        "ru": "Без Знамения до 85 уровня"
+        "ua": "Знамение — лише книга 5★",
+        "en": "Omen needs a 5★ book",
+        "ru": "Знамение — только книга 5★"
        }
       ],
       [
@@ -330,9 +330,9 @@
       [
        "sagittarius",
        {
-        "ua": "14,5 тис. сили, кайт коренями",
-        "en": "14.5k power, kiting with roots",
-        "ru": "14,5 тыс. силы, кайт корнями"
+        "ua": "14,5 тис. за 1 с, удержання для кайту",
+        "en": "14.5k per second, hold for kiting",
+        "ru": "14,5 тыс. за 1 с, удержание для кайта"
        }
       ],
       [
@@ -346,9 +346,9 @@
       [
        "trickster",
        {
-        "ua": "Подвійний Дротик і сильний спам",
-        "en": "Twin Shot and strong spam skill",
-        "ru": "Двойной Дротик и сильный спам"
+        "ua": "Спам-удар 6,9 тис. за 1 с, лук",
+        "en": "Spam skill 6.9k per second, bow",
+        "ru": "Спам-удар 6,9 тыс. за 1 с, лук"
        }
       ]
      ]
@@ -367,9 +367,9 @@
       [
        "dreadnought",
        {
-        "ua": "Стійка Пронизування",
-        "en": "Piercing stance",
-        "ru": "Стойка Пронзания"
+        "ua": "Смена Стойки під одну ціль",
+        "en": "Stance Change for single target",
+        "ru": "Смена Стойки под одну цель"
        }
       ],
       [
