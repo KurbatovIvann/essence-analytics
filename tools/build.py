@@ -338,7 +338,7 @@ def home(lang):
                 chips.append(f'<a class="chip" href="{rel}{lang}/class/{slug}/">{icon(rel, slug)}<span><b>{e(c["name"][lang])}</b><small>{e(why[lang])}{extra}</small></span></a>')
             rows.append(f'<div class="tier"><div class="tier-badge tier-{tier}">{tier}</div><div class="tier-list">{"".join(chips)}</div></div>')
         panels.append(f'<div role="tabpanel" id="panel-{tid}" aria-labelledby="tab-{tid}"{"" if i == 0 else " hidden"}>'
-                      f'<p class="c2" style="margin:0 0 18px">{e(tab["note"][lang])}</p><div class="tiers">{"".join(rows)}</div></div>')
+                      f'<div class="tiers">{"".join(rows)}</div></div>')
     tiers = f"""<section class="wrap sec" id="tiers">
 <div class="sec-head"><h1>{t['tier_title']}</h1>
 <div class="tabs" role="tablist" aria-label="{e(t['category'])}">{"".join(tabs)}</div></div>
