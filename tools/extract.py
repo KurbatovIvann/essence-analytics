@@ -177,7 +177,7 @@ def main():
                 "grade": max(l["grade"] or 0 for l in lv), "level": L["level"], "top": s["topLevel"],
                 "power": pw, "pve": pve, "hits": hits,
                 "targets": lim or tg.get("limit") or (1 if tg.get("shape") == "single" else None),
-                "cd": (tip or {}).get("reuseDelay"), "mp": (tip or {}).get("mpConsume"),
+                "cd": (tip or {}).get("reuseDelay"), "hit": (tip or {}).get("hitTime"), "mp": (tip or {}).get("mpConsume"),
                 "ore": ((tip or {}).get("consume") or {}).get("count") if isinstance((tip or {}).get("consume"), dict) else None,
             })
             icons.add(s["icon"])
@@ -239,7 +239,16 @@ def main():
                         if sk["id"] in avail and lv and 1 <= sk["grade"] <= 3 and ("→ " + v["name"]) in clean(lv[-1]["desc"]):
                             v["book"] = sk["grade"]
                             v["via"] = {l: sk_names[l].get(sk["id"], sk["name"]) for l in d}
+                            mb = re.search(r"([^\n→]+?) → " + re.escape(v["name"]), clean(lv[-1]["desc"]))
+                            if mb:
+                                v["base"] = mb.group(1).strip()
                             break
+                # base / PvE power and base hit time from the class's own skill data
+                ref = next((x for x in key if x["name"]["ru"] in (v["name"], v.get("base"))), None)
+                if ref:
+                    v["power"], v["pve"], v["hit"] = ref["power"], ref["pve"] or ref["power"], ref["hit"]
+                    if v["name"] != ref["name"]["ru"]:  # replaced skill: same power, own hit count
+                        v["pve"] = ref["pve"] or ref["power"]
                 c[k] = v
         classes.append(c)
 

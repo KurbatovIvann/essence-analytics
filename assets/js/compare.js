@@ -14,7 +14,14 @@
     return s;
   }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (ch) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]; }); }
-  function pps(c) { var s = c.spam; return s && s.pw && s.cd ? s.pw * s.h / s.cd : null; }
+  // one cycle = the longer of cooldown and base cast time
+  function cycle(s) { return Math.max(s.cd || 0, (s.hit || 0) / 1000) || null; }
+  function pps(c) { var s = c.spam; var t = s && cycle(s); return s && s.pve && t ? s.pve * s.h / t : null; }
+  function pw(s) {
+    return s.pve && s.power && s.pve !== s.power
+      ? s.h + ' × ' + fmt(s.power) + ' (PvE ' + fmt(s.pve) + ')'
+      : s.h + ' × ' + fmt(s.pve || s.power || s.pw);
+  }
 
   function sel() { return picks.map(function (p) { return by[p.value]; }).filter(Boolean); }
 
@@ -34,7 +41,7 @@
       [T.cmp_race, function (c) { return esc(c.race); }],
       [T.cmp_spam, function (c) {
         var s = c.spam; if (!s) return '—';
-        return '<b>' + esc(s.name) + '</b><div class="muted small">' + s.h + ' × ' + fmt(s.pw) + ' · ' + fmt(s.cd, 2) + ' ' + T.sec + '</div>';
+        return '<b>' + esc(s.name) + '</b><div class="muted small">' + pw(s) + ' · ' + T.cmp_cd + ' ' + fmt(s.cd, 2) + ' ' + T.sec + (s.hit ? ' · ' + T.cmp_hit + ' ' + fmt(s.hit / 1000, 2) + ' ' + T.sec : '') + '</div>';
       }],
       [T.cmp_pps, function (c) {
         var v = pps(c); if (!v) return '—';
@@ -42,7 +49,7 @@
       }],
       [T.cmp_aoe, function (c) {
         var a = c.aoe; if (!a) return '—';
-        return '<b>' + esc(a.name) + '</b><div class="muted small">' + a.h + ' × ' + fmt(a.pw) + ' · ' + T.targets_n.replace('{n}', a.lim || '—') + ' · ' + fmt(a.cd) + ' ' + T.sec + '</div>';
+        return '<b>' + esc(a.name) + '</b><div class="muted small">' + pw(a) + ' · ' + T.targets_n.replace('{n}', a.lim || '—') + ' · ' + T.cmp_cd + ' ' + fmt(a.cd) + ' ' + T.sec + '</div>';
       }],
       [T.cmp_mp, function (c) { return c.spam && c.spam.mp ? fmt(c.spam.mp) : '—'; }],
       [T.cmp_books, function (c) { return c.books['1'] + ' / ' + c.books['2'] + ' / ' + c.books['3']; }]
