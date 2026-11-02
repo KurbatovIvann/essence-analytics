@@ -1,0 +1,29 @@
+{
+ "note": {
+  "ua": "Вихлоп на 1 000 HP шкоди — чесне порівняння між зонами з різними мобами. Дані: вікі, моби відкритих локацій.",
+  "en": "Yield per 1,000 HP of damage — a fair comparison between zones with different mobs. Source: wiki, open-world mobs.",
+  "ru": "Выхлоп на 1 000 HP урона — честное сравнение зон с разными мобами. Данные: вики, мобы открытых локаций."
+ },
+ "zones": [
+  {"name": {"ua": "Долина Драконів", "en": "Dragon Valley", "ru": "Долина Драконов"}, "lvl": "78–79", "hp": "3 700–3 900", "exp": 368, "adena": 57, "book": true},
+  {"name": {"ua": "Крума, 3-й поверх", "en": "Cruma Tower, 3rd floor", "ru": "Крума, 3-й этаж"}, "lvl": "78", "hp": "4 000", "exp": 326, "adena": 58, "book": true},
+  {"name": {"ua": "Пасіка / Пагорби Діона", "en": "Bee Hive / Dion Hills", "ru": "Пасека / Холмы Диона"}, "lvl": "80", "hp": "5 300", "exp": 314, "adena": null, "book": true},
+  {"name": {"ua": "Крума, 2-й поверх", "en": "Cruma Tower, 2nd floor", "ru": "Крума, 2-й этаж"}, "lvl": "82", "hp": "5 900", "exp": 274, "adena": 77, "book": false},
+  {"name": {"ua": "Гарячі Джерела", "en": "Hot Springs", "ru": "Горячие Источники"}, "lvl": "85", "hp": "12 700", "exp": 717, "adena": 115, "book": true}
+ ],
+ "spots": [
+  {"code": "ДД83", "name": {"ua": "Долина Драконів, елітні дракони", "en": "Dragon Valley, elite dragons", "ru": "Долина Драконов, элитные драконы"}, "lvl": 83, "hp": "~6 000",
+   "what": {"ua": "Швидкість вбивства по одному мобу — еталон", "en": "Single-mob kill speed — the baseline", "ru": "Скорость убийства по одному мобу — эталон"}},
+  {"code": "СМ84", "name": {"ua": "Тренувальний Табір Сел Махумів", "en": "Sel Mahum Training Grounds", "ru": "Тренировочный Лагерь Сел Махумов"}, "lvl": 84, "hp": "~5 800",
+   "what": {"ua": "Живучість і AoE, коли моби налітають самі", "en": "Survival and AoE when mobs aggro on their own", "ru": "Живучесть и AoE, когда мобы агрятся сами"}},
+  {"code": "ГЖ85", "name": {"ua": "Гарячі Джерела", "en": "Hot Springs", "ru": "Горячие Источники"}, "lvl": 85, "hp": "~12 700",
+   "what": {"ua": "Моби з більшим HP, адена і уламки Epic на капі", "en": "Higher-HP mobs, adena and Epic shards at cap", "ru": "Мобы с большим HP, адена и осколки Epic на капе"}}
+ ],
+ "dates": [
+  {"d": "06.11", "t": {"ua": "Старт ОБТ", "en": "Open beta starts", "ru": "Старт ОБТ"}},
+  {"d": "13.11", "t": {"ua": "Відкриття сервера", "en": "Server launch", "ru": "Открытие сервера"}},
+  {"d": "13.11", "t": {"ua": "Календар подарунків, з 20:00", "en": "Gift calendar, from 20:00", "ru": "Календарь подарков, с 20:00"}},
+  {"d": "31.12", "t": {"ua": "Остання дата Руни Новачка", "en": "Last day of the Novice Rune", "ru": "Последний день Руны Новичка"}},
+  {"d": "06:30", "t": {"ua": "Щоденне скидання", "en": "Daily reset", "ru": "Ежедневный сброс"}}
+ ]
+}

@@ -1,0 +1,95 @@
+{
+ "status": "forecast",
+ "note": {
+  "ua": "Розрахунок з даних вікі. Після 06.11 класи з реальними замірами отримають позначку з кількістю тестів.",
+  "en": "Calculated from wiki data. After 06.11, classes with real measurements get a mark with the number of tests.",
+  "ru": "Расчёт по данным вики. После 06.11 классы с реальными замерами получат отметку с количеством тестов."
+ },
+ "tabs": {
+  "pve": {
+   "label": {"ua": "PvE", "en": "PvE", "ru": "PvE"},
+   "note": {
+    "ua": "Соло-фарм у відкритих локаціях 76–84 без книг 4★/5★.",
+    "en": "Solo farming in open zones 76–84 without 4★/5★ books.",
+    "ru": "Соло-фарм в открытых локациях 76–84 без книг 4★/5★."
+   },
+   "rows": [
+    ["S", [["orc_rider_3", {"ua": "AoE на 10 цілей кожні 5 с без руди", "en": "10-target AoE every 5 s, no ore", "ru": "AoE на 10 целей каждые 5 с без руды"}]]],
+    ["A", [
+     ["titan", {"ua": "AoE з відкатом 3 с + вампіризм", "en": "AoE on a 3 s cooldown + vampirism", "ru": "AoE с откатом 3 с + вампиризм"}],
+     ["trickster", {"ua": "Найкращий AoE серед дальніх", "en": "Best AoE among ranged classes", "ru": "Лучший AoE среди дальников"}],
+     ["grand_khavatari", {"ua": "Сильний AoE без Рідкісних книг", "en": "Strong AoE without Rare books", "ru": "Сильный AoE без Редких книг"}]
+    ]],
+    ["B", [
+     ["sagittarius", {"ua": "Смертельний Постріл 14,5 тис. у PvE", "en": "Lethal Shot 14.5k power in PvE", "ru": "Смертельный Выстрел 14,5 тыс. в PvE"}],
+     ["ghost_sentinel", {"ua": "AoE на 8 цілей, притягування", "en": "8-target AoE, pull", "ru": "AoE на 8 целей, притягивание"}],
+     ["moonlight_sentinel", {"ua": "Найкомфортніший автофарм лучника", "en": "Most comfortable archer auto-farm", "ru": "Самый комфортный автофарм лучника"}],
+     ["dreadnought", {"ua": "Слабкий до Рідкісних книг", "en": "Weak until Rare books", "ru": "Слаб до Редких книг"}],
+     ["maestro", {"ua": "AoE без руди, живучий", "en": "AoE without ore, durable", "ru": "AoE без руды, живучий"}]
+    ]],
+    ["C", [
+     ["mystic_muse", {"ua": "Без модів AoE слабкий", "en": "Weak AoE without mods", "ru": "Без модов AoE слабый"}],
+     ["human_deathknight_3", {"ua": "Сильний 1 на 1, слабкий AoE", "en": "Strong 1v1, weak AoE", "ru": "Силён 1 на 1, слабый AoE"}],
+     ["storm_blaster", {"ua": "Лише одна ціль", "en": "Single target only", "ru": "Только одна цель"}],
+     ["rose_vain_3", {"ua": "AoE на 3–5 цілей", "en": "AoE on 3–5 targets", "ru": "AoE на 3–5 целей"}]
+    ]]
+   ]
+  },
+  "pvp": {
+   "label": {"ua": "PvP", "en": "PvP", "ru": "PvP"},
+   "note": {
+    "ua": "Олімпіада 3х3 і бої у відкритому світі на стадії 1. Важить контроль, бурст і захисні вміння, доступні до 84.",
+    "en": "3v3 Olympiad and open-world fights in stage 1. Control, burst and defensive skills available before 84 matter.",
+    "ru": "Олимпиада 3х3 и бои в открытом мире на стадии 1. Важны контроль, бурст и защитные умения, доступные до 84."
+   },
+   "rows": [
+    ["S", [["delf_deathknight_3", {"ua": "Заточення 7 цілей, страх, друге життя", "en": "7-target imprison, fear, second life", "ru": "Заточение 7 целей, страх, вторая жизнь"}]]],
+    ["A", [
+     ["storm_screamer", {"ua": "Сайленс 4 с, анти-хіл −60%", "en": "4 s silence, −60% healing", "ru": "Сайленс 4 с, анти-хил −60%"}],
+     ["orc_rider_3", {"ua": "Сповільнення 10 цілей, опір магії +40%", "en": "10-target slow, +40% magic resistance", "ru": "Замедление 10 целей, сопротивление магии +40%"}],
+     ["dreadnought", {"ua": "Блок 10 дебафів, бар’єр", "en": "Blocks 10 debuffs, barrier", "ru": "Блок 10 дебаффов, барьер"}]
+    ]],
+    ["B", [
+     ["ghost_sentinel", {"ua": "Відкидання і корені", "en": "Knockback and roots", "ru": "Отбрасывание и корни"}],
+     ["soul_hound", {"ua": "Відскок зі станом 3 с", "en": "Leap back with 3 s stun", "ru": "Отскок со станом 3 с"}],
+     ["rose_vain_3", {"ua": "−30% макс. HP цілі", "en": "−30% target max HP", "ru": "−30% макс. HP цели"}],
+     ["spectral_master", {"ua": "Анти-хіл −95%, параліч", "en": "−95% healing, paralysis", "ru": "Анти-хил −95%, паралич"}]
+    ]],
+    ["C", [
+     ["crow_3", {"ua": "Без Знамения до 85 рівня", "en": "No Omen until level 85", "ru": "Без Знамения до 85 уровня"}],
+     ["storm_blaster", {"ua": "Бурст, мало контролю", "en": "Burst, little control", "ru": "Бурст, мало контроля"}],
+     ["titan", {"ua": "Мало контролю", "en": "Little control", "ru": "Мало контроля"}]
+    ]]
+   ]
+  },
+  "tower": {
+   "label": {"ua": "Вежа Босів", "en": "Boss Tower", "ru": "Башня Боссов"},
+   "note": {
+    "ua": "Соло-бій 60 секунд з босом. Важить шкода по одній цілі і вміння пережити посилених босів на Складній і в Пеклі.",
+    "en": "A 60-second solo boss fight. Single-target damage and surviving buffed bosses on Hard and Hell matter.",
+    "ru": "Соло-бой 60 секунд с боссом. Важны урон по одной цели и умение пережить усиленных боссов на Сложной и в Аду."
+   },
+   "rows": [
+    ["S", [["storm_blaster", {"ua": "Тройной Импульс: 3 удари кожні 0,85 с", "en": "Triple Impulse: 3 hits every 0.85 s", "ru": "Тройной Импульс: 3 удара каждые 0,85 с"}]]],
+    ["A", [
+     ["human_deathknight_3", {"ua": "Кара 10,3 тис. з відкатом 1 с", "en": "10.3k power nuke on a 1 s cooldown", "ru": "Кара 10,3 тыс. с откатом 1 с"}],
+     ["sagittarius", {"ua": "14,5 тис. сили, кайт коренями", "en": "14.5k power, kiting with roots", "ru": "14,5 тыс. силы, кайт корнями"}],
+     ["ghost_sentinel", {"ua": "Кайт і сильний одиночний удар", "en": "Kiting and a strong single hit", "ru": "Кайт и сильный одиночный удар"}],
+     ["trickster", {"ua": "Подвійний Дротик і сильний спам", "en": "Twin Shot and strong spam skill", "ru": "Двойной Дротик и сильный спам"}]
+    ]],
+    ["B", [
+     ["orc_rider_3", {"ua": "Середня шкода по одній цілі", "en": "Average single-target damage", "ru": "Средний урон по одной цели"}],
+     ["dreadnought", {"ua": "Стійка Пронизування", "en": "Piercing stance", "ru": "Стойка Пронзания"}],
+     ["spirit_3", {"ua": "Сильний бурст, складне комбо", "en": "Strong burst, complex combo", "ru": "Сильный бурст, сложное комбо"}],
+     ["rose_vain_3", {"ua": "−30% М.Зах, якщо складається", "en": "−30% M.Def if it stacks", "ru": "−30% М.Защ, если стакается"}]
+    ]],
+    ["C", [
+     ["titan", {"ua": "AoE тут не допомагає", "en": "AoE does not help here", "ru": "AoE здесь не помогает"}],
+     ["grand_khavatari", {"ua": "Середня шкода", "en": "Average damage", "ru": "Средний урон"}],
+     ["arcana_lord", {"ua": "Пети у Вежі під питанням", "en": "Summons in the Tower are unclear", "ru": "Петы в Башне под вопросом"}],
+     ["spectral_master", {"ua": "Пети у Вежі під питанням", "en": "Summons in the Tower are unclear", "ru": "Петы в Башне под вопросом"}]
+    ]]
+   ]
+  }
+ }
+}
