@@ -575,7 +575,10 @@ def overlay(lang):
 html,body{{margin:0;background:transparent;color:#ECE4D3;font-family:Manrope,system-ui,sans-serif}}
 body.solid{{background:#100E0C}}
 [hidden]{{display:none!important}}
-#wrap{{display:inline-block;padding:var(--pad,16px);transform-origin:top left;transform:scale(var(--scale,1))}}
+#wrap{{position:fixed;top:0;left:0;padding:var(--pad,24px);transform-origin:top left;transform:scale(var(--scale,1))}}
+body.tr #wrap{{left:auto;right:0;transform-origin:top right}}
+body.bl #wrap{{top:auto;bottom:0;transform-origin:bottom left}}
+body.br #wrap{{top:auto;left:auto;bottom:0;right:0;transform-origin:bottom right}}
 section{{width:var(--w,560px);background:rgba(16,14,12,var(--alpha,.88));border:1px solid #3A332A;border-radius:16px;padding:16px;box-shadow:0 8px 32px rgba(0,0,0,.45)}}
 header{{display:flex;align-items:baseline;gap:10px;margin:0 2px 12px;flex-wrap:wrap}}
 header b{{font-family:Cinzel,serif;font-size:22px}}
@@ -597,6 +600,8 @@ section.in{{animation:in .5s ease}}
 (function(){{
   var q=new URLSearchParams(location.search), b=document.body, r=document.documentElement.style;
   if(q.get('bg')==='solid') b.classList.add('solid');
+  if(/^(tl|tr|bl|br)$/.test(q.get('pos')||'')) b.classList.add(q.get('pos'));
+  if(q.get('pad')) r.setProperty('--pad', q.get('pad')+'px');
   if(q.get('why')==='1') b.classList.add('why');
   if(q.get('scale')) r.setProperty('--scale', q.get('scale'));
   if(q.get('width')) r.setProperty('--w', q.get('width')+'px');
