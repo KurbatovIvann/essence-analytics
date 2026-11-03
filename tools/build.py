@@ -607,7 +607,7 @@ section.in{{animation:in .5s ease}}
   if(q.get('width')) r.setProperty('--w', q.get('width')+'px');
   if(q.get('alpha')) r.setProperty('--alpha', q.get('alpha'));
   var tabs=(q.get('tab')||'pve').split(','), secs=Math.max(5, +q.get('every')||20), i=0;
-  if(tabs[0]==='all') tabs=['pve','pvp','tower'];
+  if(tabs[0]==='all') tabs=['pve','party','pvp','tower'];
   function show(){{
     document.querySelectorAll('section').forEach(function(s){{
       var on=s.getAttribute('data-tab')===tabs[i%tabs.length]; s.hidden=!on; s.classList.toggle('in',on);
