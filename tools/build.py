@@ -546,6 +546,75 @@ def measurements(lang):
     return page(lang, rel, "meas", "measurements/", t["meas_page"], body)
 
 
+
+# ---------------------------------------------------------------- stream overlay (OBS browser source)
+OV_T = {"ua": ("Tier-лист · Стадія 1", "Прогноз до ОБТ"), "en": ("Tier list · Stage 1", "Pre-OBT forecast"),
+        "ru": ("Тир-лист · Стадия 1", "Прогноз до ОБТ")}
+
+
+def overlay(lang):
+    rel = "../../"
+    title, badge = OV_T[lang]
+    panels = []
+    for tid, tab in TIERS["tabs"].items():
+        rows = []
+        for tier, lst in tab["rows"]:
+            chips = "".join(
+                f'<div class="c"><img src="{rel}assets/icons/classes/{slug}.webp" alt=""><span>{e(BY[slug]["name"][lang])}'
+                f'<small>{e(why[lang])}</small></span></div>' for slug, why in lst)
+            rows.append(f'<div class="r"><div class="b t{tier}">{tier}</div><div class="l">{chips}</div></div>')
+        panels.append(f'<section data-tab="{tid}" hidden><header><b>{e(title)}</b><i>{e(tab["label"][lang])}</i>'
+                      f'<em>{e(badge)}</em></header>{"".join(rows)}</section>')
+    return f"""<!doctype html>
+<html lang="{HTML_LANG[lang]}"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{e(title)} — overlay</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+html,body{{margin:0;background:transparent;color:#ECE4D3;font-family:Manrope,system-ui,sans-serif}}
+body.solid{{background:#100E0C}}
+[hidden]{{display:none!important}}
+#wrap{{display:inline-block;padding:var(--pad,16px);transform-origin:top left;transform:scale(var(--scale,1))}}
+section{{width:var(--w,560px);background:rgba(16,14,12,var(--alpha,.88));border:1px solid #3A332A;border-radius:16px;padding:16px;box-shadow:0 8px 32px rgba(0,0,0,.45)}}
+header{{display:flex;align-items:baseline;gap:10px;margin:0 2px 12px;flex-wrap:wrap}}
+header b{{font-family:Cinzel,serif;font-size:22px}}
+header i{{font-style:normal;font-weight:700;color:#1A1408;background:#E2B95A;border-radius:6px;padding:2px 10px;font-size:15px}}
+header em{{font-style:normal;color:#A99F8C;font-size:13px;margin-left:auto}}
+.r{{display:flex;border:1px solid #2B2620;border-radius:12px;overflow:hidden;background:#17140F;margin-top:8px}}
+.b{{width:52px;flex:none;display:flex;align-items:center;justify-content:center;font-family:Cinzel,serif;font-size:26px;font-weight:700}}
+.tS{{background:#E2B95A;color:#1A1408}}.tA{{background:#8C5A24;color:#FFF1DE}}.tB{{background:#4F6280;color:#EEF3FA}}.tC{{background:#3A332A;color:#ECE4D3}}
+.l{{display:flex;flex-wrap:wrap;gap:6px;padding:8px;flex:1;min-width:0}}
+.c{{display:flex;align-items:center;gap:8px;padding:4px 10px 4px 4px;border-radius:9px;background:#211D18;border:1px solid #332D25;font-weight:600;font-size:15px;line-height:1.2}}
+.c img{{width:34px;height:34px;border-radius:6px;border:1px solid #4A4033;display:block}}
+.c small{{display:none;font-weight:500;font-size:12px;color:#A99F8C;margin-top:2px}}
+body.why .c{{flex:1 1 100%}} body.why .c span{{display:flex;flex-direction:column}} body.why .c small{{display:block}}
+section.in{{animation:in .5s ease}}
+@keyframes in{{from{{opacity:0;transform:translateY(8px)}}to{{opacity:1;transform:none}}}}
+</style></head>
+<body><div id="wrap">{"".join(panels)}</div>
+<script>
+(function(){{
+  var q=new URLSearchParams(location.search), b=document.body, r=document.documentElement.style;
+  if(q.get('bg')==='solid') b.classList.add('solid');
+  if(q.get('why')==='1') b.classList.add('why');
+  if(q.get('scale')) r.setProperty('--scale', q.get('scale'));
+  if(q.get('width')) r.setProperty('--w', q.get('width')+'px');
+  if(q.get('alpha')) r.setProperty('--alpha', q.get('alpha'));
+  var tabs=(q.get('tab')||'pve').split(','), secs=Math.max(5, +q.get('every')||20), i=0;
+  if(tabs[0]==='all') tabs=['pve','pvp','tower'];
+  function show(){{
+    document.querySelectorAll('section').forEach(function(s){{
+      var on=s.getAttribute('data-tab')===tabs[i%tabs.length]; s.hidden=!on; s.classList.toggle('in',on);
+    }}); i++;
+  }}
+  show(); if(tabs.length>1) setInterval(show, secs*1000);
+  // pick up site updates without touching OBS
+  setTimeout(function(){{ location.reload(); }}, (+q.get('reload')||30)*60000);
+}})();
+</script></body></html>
+"""
+
 # ---------------------------------------------------------------- root
 def root_index():
     return """<!doctype html><html lang="uk"><head><meta charset="utf-8">
@@ -570,6 +639,7 @@ def main():
         write(f"{lang}/compare/index.html", compare(lang))
         write(f"{lang}/zones/index.html", zones(lang))
         write(f"{lang}/measurements/index.html", measurements(lang))
+        write(f"{lang}/overlay/index.html", overlay(lang))
         for c in CLASSES:
             write(f"{lang}/class/{c['slug']}/index.html", class_page(lang, c))
             n += 1
