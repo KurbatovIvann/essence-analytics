@@ -8,9 +8,9 @@
  "tabs": {
   "pve": {
    "label": {
-    "ua": "PvE",
-    "en": "PvE",
-    "ru": "PvE"
+    "ua": "PvE · Соло",
+    "en": "PvE · Solo",
+    "ru": "PvE · Соло"
    },
    "rows": [
     [
@@ -173,6 +173,211 @@
         "ua": "AoE на 3–5 цілей з відкатом 15–90 с",
         "en": "AoE on 3–5 targets, 15–90 s cooldowns",
         "ru": "AoE на 3–5 целей с откатом 15–90 с"
+       }
+      ]
+     ]
+    ]
+   ]
+  },
+  "party": {
+   "label": {
+    "ua": "PvE · Група",
+    "en": "PvE · Party",
+    "ru": "PvE · Группа"
+   },
+   "rows": [
+    [
+     "S",
+     [
+      [
+       "orc_rider_3",
+       {
+        "ua": "Два AoE на 10 цілей і одне на 6, відкат 5 с",
+        "en": "Two 10-target AoEs and one 6-target, 5 s cooldown",
+        "ru": "Два AoE на 10 целей и одно на 6, откат 5 с"
+       }
+      ],
+      [
+       "titan",
+       {
+        "ua": "AoE на 12 цілей (5 с) і три AoE на 5 цілей (3 с)",
+        "en": "12-target AoE (5 s) and three 5-target AoEs (3 s)",
+        "ru": "AoE на 12 целей (5 с) и три AoE на 5 целей (3 с)"
+       }
+      ]
+     ]
+    ],
+    [
+     "A",
+     [
+      [
+       "trickster",
+       {
+        "ua": "Два AoE на 8 цілей (15 с, 30 с), лук",
+        "en": "Two 8-target AoEs (15 s, 30 s), bow",
+        "ru": "Два AoE на 8 целей (15 с, 30 с), лук"
+       }
+      ],
+      [
+       "dreadnought",
+       {
+        "ua": "Два AoE на 10 цілей (15 с, 20 с) і на 4 цілі (3 с)",
+        "en": "Two 10-target AoEs (15 s, 20 s) and a 4-target one (3 s)",
+        "ru": "Два AoE на 10 целей (15 с, 20 с) и на 4 цели (3 с)"
+       }
+      ],
+      [
+       "sagittarius",
+       {
+        "ua": "Дощ стріл на 15 цілей (30 с), два AoE на 8 цілей",
+        "en": "15-target arrow rain (30 s), two 8-target AoEs",
+        "ru": "Дождь стрел на 15 целей (30 с), два AoE на 8 целей"
+       }
+      ],
+      [
+       "ghost_sentinel",
+       {
+        "ua": "Дощ стріл на 15 цілей (30 с), два AoE на 8 цілей",
+        "en": "15-target arrow rain (30 s), two 8-target AoEs",
+        "ru": "Дождь стрел на 15 целей (30 с), два AoE на 8 целей"
+       }
+      ],
+      [
+       "moonlight_sentinel",
+       {
+        "ua": "Дощ стріл на 15 цілей (30 с), два AoE на 8 цілей",
+        "en": "15-target arrow rain (30 s), two 8-target AoEs",
+        "ru": "Дождь стрел на 15 целей (30 с), два AoE на 8 целей"
+       }
+      ],
+      [
+       "grand_khavatari",
+       {
+        "ua": "П'ять AoE на 5 цілей з відкатом 3–10 с",
+        "en": "Five 5-target AoEs, 3–10 s cooldowns",
+        "ru": "Пять AoE на 5 целей с откатом 3–10 с"
+       }
+      ]
+     ]
+    ],
+    [
+     "B",
+     [
+      [
+       "sacred_templar_3",
+       {
+        "ua": "Танк, три AoE на 6 цілей (5–30 с)",
+        "en": "Tank, three 6-target AoEs (5–30 s)",
+        "ru": "Танк, три AoE на 6 целей (5–30 с)"
+       }
+      ],
+      [
+       "maestro",
+       {
+        "ua": "AoE на 8 цілей (8 с) і на 5 цілей (3 с)",
+        "en": "8-target AoE (8 s) and 5-target AoE (3 s)",
+        "ru": "AoE на 8 целей (8 с) и на 5 целей (3 с)"
+       }
+      ],
+      [
+       "hell_knight",
+       {
+        "ua": "Танк, три AoE на 6 цілей (10–30 с)",
+        "en": "Tank, three 6-target AoEs (10–30 s)",
+        "ru": "Танк, три AoE на 6 целей (10–30 с)"
+       }
+      ],
+      [
+       "fortune_seeker",
+       {
+        "ua": "П'ять AoE на 5–7 цілей (15–30 с)",
+        "en": "Five 5–7-target AoEs (15–30 s)",
+        "ru": "Пять AoE на 5–7 целей (15–30 с)"
+       }
+      ],
+      [
+       "mystic_muse",
+       {
+        "ua": "AoE на 12 і 10 цілей (30 с), два на 6 цілей (7 с)",
+        "en": "12- and 10-target AoEs (30 s), two 6-target (7 s)",
+        "ru": "AoE на 12 и 10 целей (30 с), два на 6 целей (7 с)"
+       }
+      ],
+      [
+       "spirit_3",
+       {
+        "ua": "Два AoE на 8 цілей (10 с, 30 с)",
+        "en": "Two 8-target AoEs (10 s, 30 s)",
+        "ru": "Два AoE на 8 целей (10 с, 30 с)"
+       }
+      ],
+      [
+       "cardinal",
+       {
+        "ua": "Груповий хіл, масове воскресіння",
+        "en": "Group heal, mass resurrection",
+        "ru": "Групповой хил, массовое воскрешение"
+       }
+      ],
+      [
+       "evas_saint",
+       {
+        "ua": "Груповий хіл, Дерево Життя",
+        "en": "Group heal, Tree of Life",
+        "ru": "Групповой хил, Дерево Жизни"
+       }
+      ],
+      [
+       "dominator",
+       {
+        "ua": "Печать Отчаяния: −30% М.Зах і Скор. Атк. на 6 цілей",
+        "en": "Seal of Despair: −30% M.Def and Atk. Spd on 6 targets",
+        "ru": "Печать Отчаяния: −30% М.Защ и Скор. Атк. на 6 целей"
+       }
+      ]
+     ]
+    ],
+    [
+     "C",
+     [
+      [
+       "storm_blaster",
+       {
+        "ua": "AoE на 6 і 8 цілей з відкатом 40–60 с і рудою",
+        "en": "6- and 8-target AoEs, 40–60 s cooldowns, ore",
+        "ru": "AoE на 6 и 8 целей с откатом 40–60 с и рудой"
+       }
+      ],
+      [
+       "human_deathknight_3",
+       {
+        "ua": "AoE на 20 цілей, але відкат 30 с",
+        "en": "20-target AoE, but a 30 s cooldown",
+        "ru": "AoE на 20 целей, но откат 30 с"
+       }
+      ],
+      [
+       "werewolf_3",
+       {
+        "ua": "Три AoE на 6–8 цілей з відкатом 20–30 с",
+        "en": "Three 6–8-target AoEs, 20–30 s cooldowns",
+        "ru": "Три AoE на 6–8 целей с откатом 20–30 с"
+       }
+      ],
+      [
+       "secret_assassin_male_3",
+       {
+        "ua": "AoE на 7 цілей з відкатом 20 с",
+        "en": "7-target AoE on a 20 s cooldown",
+        "ru": "AoE на 7 целей с откатом 20 с"
+       }
+      ],
+      [
+       "crow_3",
+       {
+        "ua": "AoE на 8–10 цілей, два з рудою",
+        "en": "8–10-target AoEs, two need ore",
+        "ru": "AoE на 8–10 целей, два с рудой"
        }
       ]
      ]
