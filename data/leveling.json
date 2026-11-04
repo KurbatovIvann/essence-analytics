@@ -1,0 +1,220 @@
+{
+ "exp_table": {
+  "76": 158869073,
+  "77": 199436717,
+  "78": 254203037,
+  "79": 330875885,
+  "80": 445885156,
+  "81": 618399064,
+  "82": 877169925,
+  "83": 1265326216,
+  "84": 1847560654,
+  "85": 2720912310
+ },
+ "start_total": 159700000.0,
+ "blocks": [
+  {
+   "gate": 76,
+   "name": {
+    "ua": "Завадити Ящерам ×5 + Пасіка (схід) ×2",
+    "en": "Lizardmen ×5 + Bee Hive (east) ×2",
+    "ru": "Помешать Ящерам ×5 + Пасека (восток) ×2"
+   },
+   "loc": {
+    "ua": "Рівнини Ящерів, Пасіка",
+    "en": "Plains of the Lizardmen, Bee Hive",
+    "ru": "Равнины Ящеров, Пасека"
+   },
+   "kills": 2500,
+   "exp": 32500000,
+   "per_kill": 13000,
+   "grind_before": 0,
+   "after_level": 76,
+   "after_pct": 88
+  },
+  {
+   "gate": 77,
+   "name": {
+    "ua": "Розвідка на заході Долини Драконів ×5",
+    "en": "Western Dragon Valley scouting ×5",
+    "ru": "Разведка на западе Долины Драконов ×5"
+   },
+   "loc": {
+    "ua": "Долина Драконів (захід)",
+    "en": "Dragon Valley (west)",
+    "ru": "Долина Драконов (запад)"
+   },
+   "kills": 3000,
+   "exp": 35500000,
+   "per_kill": 11833,
+   "grind_before": 4736717,
+   "after_level": 77,
+   "after_pct": 72
+  },
+  {
+   "gate": 78,
+   "name": {
+    "ua": "Крума, 3-й поверх ×5",
+    "en": "Cruma Tower 3F ×5",
+    "ru": "Башня Крумы, 3-й этаж ×5"
+   },
+   "loc": {
+    "ua": "Вежа Круми",
+    "en": "Cruma Tower",
+    "ru": "Башня Крумы"
+   },
+   "kills": 3000,
+   "exp": 46000000,
+   "per_kill": 15333,
+   "grind_before": 15066320,
+   "after_level": 78,
+   "after_pct": 65
+  },
+  {
+   "gate": 79,
+   "name": {
+    "ua": "Пасіка (захід) ×5",
+    "en": "Bee Hive (west) ×5",
+    "ru": "Пасека (запад) ×5"
+   },
+   "loc": {
+    "ua": "Пасіка",
+    "en": "Bee Hive",
+    "ru": "Пасека"
+   },
+   "kills": 3600,
+   "exp": 63000000,
+   "per_kill": 17500,
+   "grind_before": 26772848,
+   "after_level": 79,
+   "after_pct": 60
+  },
+  {
+   "gate": 80,
+   "name": {
+    "ua": "Велике полювання ×5",
+    "en": "Great Hunt ×5",
+    "ru": "Большая охота ×5"
+   },
+   "loc": {
+    "ua": "Долина Драконів (захід)",
+    "en": "Dragon Valley (west)",
+    "ru": "Долина Драконов (запад)"
+   },
+   "kills": 5000,
+   "exp": 86000000,
+   "per_kill": 17200,
+   "grind_before": 46033271,
+   "after_level": 80,
+   "after_pct": 54
+  },
+  {
+   "gate": 81,
+   "name": {
+    "ua": "Драконячі плани ×5 + Крума 2 ×5",
+    "en": "Dragon plans ×5 + Cruma 2F ×5",
+    "ru": "Драконьи планы ×5 + Крума 2 ×5"
+   },
+   "loc": {
+    "ua": "Долина Драконів (схід), Вежа Круми",
+    "en": "Dragon Valley (east), Cruma Tower",
+    "ru": "Долина Драконов (восток), Башня Крумы"
+   },
+   "kills": 11000,
+   "exp": 116000000,
+   "per_kill": 10545,
+   "grind_before": 79013908,
+   "after_level": 81,
+   "after_pct": 52
+  },
+  {
+   "gate": 82,
+   "name": {
+    "ua": "Чорні Дракони ×3 + Ракшаси ×5",
+    "en": "Black Dragons ×3 + Sel Mahum ×5",
+    "ru": "Черные Драконы ×3 + Ракшасы ×5"
+   },
+   "loc": {
+    "ua": "Долина Драконів (внутр.), Табір Сел Махумів",
+    "en": "Inner Dragon Valley, Sel Mahum Base",
+    "ru": "Долина Драконов (внутр.), Лагерь Ракшасов"
+   },
+   "kills": 11000,
+   "exp": 155000000,
+   "per_kill": 14090,
+   "grind_before": 125170861,
+   "after_level": 82,
+   "after_pct": 47
+  },
+  {
+   "gate": 83,
+   "name": {
+    "ua": "Командири Ракшасів ×5 + Ельмораден ×5",
+    "en": "Sel Mahum commanders ×5 + Elmoreden ×5",
+    "ru": "Командиры Ракшасов ×5 + Эльмораден ×5"
+   },
+   "loc": {
+    "ua": "Табір Сел Махумів, Башня Ельморадена",
+    "en": "Sel Mahum Base, Elmoreden Tower",
+    "ru": "Лагерь Ракшасов, Башня Эльморадена"
+   },
+   "kills": 3000,
+   "exp": 225000000,
+   "per_kill": 75000,
+   "grind_before": 205656291,
+   "after_level": 83,
+   "after_pct": 40
+  },
+  {
+   "gate": 84,
+   "name": {
+    "ua": "Гіганти ×5 + Гарячі Джерела ×5",
+    "en": "Giants ×5 + Hot Springs ×5",
+    "ru": "Гиганты ×5 + Горячие Источники ×5"
+   },
+   "loc": {
+    "ua": "Вхід у Печеру Гігантів, Гарячі Джерела",
+    "en": "Giant's Cave entrance, Hot Springs",
+    "ru": "Вход в Пещеру Гигантов, Горячие Источники"
+   },
+   "kills": 8500,
+   "exp": 250000000,
+   "per_kill": 29411,
+   "grind_before": 348234438,
+   "after_level": 84,
+   "after_pct": 34
+  }
+ ],
+ "trials_mexp": [
+  14,
+  22,
+  33,
+  36,
+  39,
+  42,
+  45,
+  48,
+  51,
+  54
+ ],
+ "zone": {
+  "entry": 77,
+  "minutes": 16,
+  "reset": "06:30",
+  "levels": "75–95"
+ },
+ "sources": [
+  [
+   "Задания 70–94 уровня",
+   "https://ua.essence.game/wiki/quests-76-94"
+  ],
+  [
+   "Невероятная временная зона",
+   "https://ua.essence.game/wiki/zones/transcendent-zone"
+  ],
+  [
+   "Таблиця досвіду Essence — lineage2.cc",
+   "https://lineage2.cc/index/0-10"
+  ]
+ ]
+}

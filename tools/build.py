@@ -241,7 +241,7 @@ def page(lang, rel, key, path_in_lang, title, body, scripts=""):
     t = T[lang]
     nav = [("tiers", "", t["nav_tiers"]), ("classes", "#classes", t["nav_classes"]),
            ("compare", "compare/", t["nav_compare"]), ("zones", "zones/", t["nav_zones"]),
-           ("meas", "measurements/", t["nav_meas"])]
+           ("leveling", "leveling/", LT[lang]["nav"]), ("meas", "measurements/", t["nav_meas"])]
     navh = "".join(
         f'<a href="{rel}{lang}/{h}"{" aria-current=\"page\"" if k == key else ""}>{e(lbl)}</a>' for k, h, lbl in nav)
     langs = "".join(
@@ -547,6 +547,86 @@ def measurements(lang):
 
 
 
+
+# ---------------------------------------------------------------- leveling 76–84
+LV = load("data/leveling.json")
+LT = {
+ "ua": {"nav": "Прокачка", "title": "Прокачка 76–84",
+  "lead": "До 76 рівня завдань вистачає повністю: останній блок закінчується якраз на 76. З 76 по 84 між блоками стоять завдання «Отримати N-й рівень», і рівень треба добивати на мобах — разом близько 850 млн досвіду з 1,69 млрд.",
+  "h_line": "Основна лінія 76–84", "c_gate": "Потрібен рівень", "c_block": "Блок завдань", "c_loc": "Де", "c_kills": "Мобів",
+  "c_exp": "Досвід за блок", "c_pk": "За вбивство", "c_grind": "Добити до блоку", "c_hours": "Годин", "c_after": "Після блоку",
+  "note_line": "Досвід з мобів, яких вбиваєш під час завдань, враховано приблизно. Таблиця досвіду — офіційна для Lineage 2 Essence; чи такa сама на сервері, вікі не вказує.",
+  "h_calc": "Калькулятор", "l_rate": "Твій досвід за годину, млн", "l_trials": "Пройдено «Неймовірних випробувань» до 84",
+  "r_total": "Добивати на мобах до 84", "r_hours": "Годин фарму", "mln": "млн",
+  "h_zone": "Неймовірна тимчасова зона",
+  "zone": ["Вхід з 77 рівня, 16 хвилин на день, скидання о 06:30.", "У кімнаті під твій рівень — один «Неймовірний Експеримент»: 88–134 тис. HP на 77–84 рівні.",
+           "Випробування 1–9 вимагають убити одного Експеримента. Якщо він один на захід, це одне випробування на день (+1 за квитком із завдання «Оволодіння неймовірною силою»).",
+           "Випробування 10 — Лавовий Вбивця 95 рівня (2,2 млн HP): на стадії 1 недоступне.",
+           "«Штурм зони» рівнів 2–28 вимагає по 1 000–2 000 вбивств у тій самій зоні, тож за 16 хвилин на день розтягнеться на тижні."],
+  "c_trial": "Випробування", "c_texp": "Досвід", "c_cum": "Разом", "avail": "доступне", "unavail": "лише ~95 рівень",
+  "check": "Перевірити на ОБТ: чи один Експеримент на захід і чи рахуються 16 хвилин на акаунт чи на персонажа.",
+  "src": "Джерела"},
+ "en": {"nav": "Leveling", "title": "Leveling 76–84",
+  "lead": "Up to level 76 the quests are enough: the last block ends right at 76. From 76 to 84 the line has “Reach level N” steps between blocks, and you have to grind the rest on mobs — about 850M of the 1.69B XP needed.",
+  "h_line": "Main quest line 76–84", "c_gate": "Level required", "c_block": "Quest block", "c_loc": "Where", "c_kills": "Mobs",
+  "c_exp": "XP per block", "c_pk": "Per kill", "c_grind": "Grind before block", "c_hours": "Hours", "c_after": "After block",
+  "note_line": "XP from the mobs killed for the quests is an estimate. The XP table is the official Lineage 2 Essence one; the wiki does not say whether the server uses the same.",
+  "h_calc": "Calculator", "l_rate": "Your XP per hour, millions", "l_trials": "“Transcendent trials” done before 84",
+  "r_total": "Grind on mobs up to 84", "r_hours": "Hours of farming", "mln": "M",
+  "h_zone": "Transcendent Instance Zone",
+  "zone": ["Entry from level 77, 16 minutes a day, reset at 06:30.", "The room for your level has one “Transcendent Experiment”: 88–134k HP at levels 77–84.",
+           "Trials 1–9 need one Experiment kill each. If there is one per run, that is one trial a day (+1 with the pass from “Mastering transcendent power”).",
+           "Trial 10 is the level-95 Lava Slayer (2.2M HP): not available in stage 1.",
+           "“Zone assault” levels 2–28 need 1,000–2,000 kills each in the same zone, so with 16 minutes a day it takes weeks."],
+  "c_trial": "Trial", "c_texp": "XP", "c_cum": "Total", "avail": "available", "unavail": "level ~95 only",
+  "check": "Check at OBT: one Experiment per run, and whether the 16 minutes are per account or per character.",
+  "src": "Sources"},
+ "ru": {"nav": "Прокачка", "title": "Прокачка 76–84",
+  "lead": "До 76 уровня заданий хватает полностью: последний блок заканчивается как раз на 76. С 76 по 84 между блоками стоят задания «Получение N-го уровня», и уровень надо добивать на мобах — всего около 850 млн опыта из 1,69 млрд.",
+  "h_line": "Основная линия 76–84", "c_gate": "Нужен уровень", "c_block": "Блок заданий", "c_loc": "Где", "c_kills": "Мобов",
+  "c_exp": "Опыт за блок", "c_pk": "За убийство", "c_grind": "Добить до блока", "c_hours": "Часов", "c_after": "После блока",
+  "note_line": "Опыт с мобов, убитых по заданиям, учтён примерно. Таблица опыта — официальная для Lineage 2 Essence; такая ли она на сервере, вики не указывает.",
+  "h_calc": "Калькулятор", "l_rate": "Твой опыт в час, млн", "l_trials": "Пройдено «Невероятных испытаний» до 84",
+  "r_total": "Добивать на мобах до 84", "r_hours": "Часов фарма", "mln": "млн",
+  "h_zone": "Невероятная временная зона",
+  "zone": ["Вход с 77 уровня, 16 минут в день, сброс в 06:30.", "В комнате под твой уровень — один «Невероятный Эксперимент»: 88–134 тыс. HP на 77–84 уровне.",
+           "Испытания 1–9 требуют убить одного Эксперимента. Если он один за заход, это одно испытание в день (+1 по билету из задания «Овладение невероятной силой»).",
+           "Испытание 10 — Лавовый Убийца 95 уровня (2,2 млн HP): на стадии 1 недоступно.",
+           "«Штурм зоны» уровней 2–28 требует по 1 000–2 000 убийств в той же зоне, так что при 16 минутах в день растянется на недели."],
+  "c_trial": "Испытание", "c_texp": "Опыт", "c_cum": "Всего", "avail": "доступно", "unavail": "только ~95 уровень",
+  "check": "Проверить на ОБТ: один ли Эксперимент за заход и считаются ли 16 минут на аккаунт или на персонажа.",
+  "src": "Источники"},
+}
+
+
+def leveling(lang):
+    t, lt, rel = T[lang], LT[lang], "../../"
+    mln = lambda v: num(v / 1e6, lang)
+    rows = "".join(
+        f'<tr data-grind="{b["grind_before"]}"><td class="gold">{b["gate"]}</td><td style="font-weight:600">{e(b["name"][lang])}</td><td class="c2">{e(b["loc"][lang])}</td>'
+        f'<td class="num">{num(b["kills"], lang)}</td><td class="num">{mln(b["exp"])}</td><td class="num">{num(b["per_kill"] / 1000, lang, 1)}k</td>'
+        f'<td class="num" style="font-weight:600">{mln(b["grind_before"]) if b["grind_before"] else "—"}</td><td class="num c2" data-hours>—</td>'
+        f'<td class="num c2">{b["after_level"]} ({b["after_pct"]}%)</td></tr>' for b in LV["blocks"])
+    tr = "".join(
+        f'<tr><td>{i + 1}</td><td class="num">{v}</td><td class="num c2">{sum(LV["trials_mexp"][:i + 1])}</td><td class="c2">{lt["avail"] if i < 9 else lt["unavail"]}</td></tr>'
+        for i, v in enumerate(LV["trials_mexp"]))
+    zone = "".join(f"<li>{e(x)}</li>" for x in lt["zone"])
+    src = " · ".join(f'<a href="{u}">{e(n)}</a>' for n, u in LV["sources"])
+    body = f"""<section class="wrap sec"><h1>{lt['title']}</h1><p class="c2" style="margin:10px 0 0;max-width:820px">{e(lt['lead'])}</p>
+<div class="panel" style="margin-top:20px"><h2>{lt['h_calc']}</h2>
+<div class="pickers" style="margin-top:14px"><div class="picker"><label for="rate">{lt['l_rate']}</label><input id="rate" type="number" min="1" step="1" value="40" style="min-height:44px;padding:0 14px;border-radius:10px;border:1px solid var(--line-4);background:var(--panel);color:var(--text);font:inherit"></div>
+<div class="picker"><label for="trials">{lt['l_trials']}</label><select id="trials">{"".join(f'<option value="{i}"{" selected" if i == 9 else ""}>{i}</option>' for i in range(10))}</select></div></div>
+<div class="strip" style="margin-top:16px"><span>{lt['r_total']}: <strong id="r-total">—</strong> {lt['mln']}</span><span>{lt['r_hours']}: <strong id="r-hours">—</strong></span></div></div>
+<div class="panel" style="margin-top:24px"><h2>{lt['h_line']}</h2>
+<div class="tbl-wrap" style="margin-top:14px"><table id="lv" style="min-width:980px;font-size:14px"><thead><tr><th>{lt['c_gate']}</th><th>{lt['c_block']}</th><th>{lt['c_loc']}</th><th class="num">{lt['c_kills']}</th><th class="num">{lt['c_exp']}, {lt['mln']}</th><th class="num">{lt['c_pk']}</th><th class="num">{lt['c_grind']}, {lt['mln']}</th><th class="num">{lt['c_hours']}</th><th class="num">{lt['c_after']}</th></tr></thead><tbody>{rows}</tbody></table></div>
+<p class="muted small" style="margin:10px 0 0">{e(lt['note_line'])}</p></div>
+<div class="panel" style="margin-top:24px"><h2>{lt['h_zone']}</h2><ul style="margin:12px 0 16px;padding-left:20px;color:var(--text-2)">{zone}</ul>
+<div class="tbl-wrap"><table style="min-width:480px;font-size:14px"><thead><tr><th>{lt['c_trial']}</th><th class="num">{lt['c_texp']}, {lt['mln']}</th><th class="num">{lt['c_cum']}, {lt['mln']}</th><th></th></tr></thead><tbody>{tr}</tbody></table></div>
+<div class="banner" style="margin-top:14px"><span>{e(lt['check'])}</span></div></div>
+<p class="muted small" style="margin-top:16px">{lt['src']}: {src}</p></section>
+<script id="lv-data" type="application/json">{json.dumps({"trials": LV["trials_mexp"], "lang": lang})}</script>"""
+    return page(lang, rel, "leveling", "leveling/", lt["title"], body, f'<script src="{rel}assets/js/leveling.js" defer></script>')
+
 # ---------------------------------------------------------------- stream overlay (OBS browser source)
 OV_T = {"ua": ("Tier-лист · Стадія 1", "Прогноз до ОБТ"), "en": ("Tier list · Stage 1", "Pre-OBT forecast"),
         "ru": ("Тир-лист · Стадия 1", "Прогноз до ОБТ")}
@@ -645,6 +725,7 @@ def main():
         write(f"{lang}/zones/index.html", zones(lang))
         write(f"{lang}/measurements/index.html", measurements(lang))
         write(f"{lang}/overlay/index.html", overlay(lang))
+        write(f"{lang}/leveling/index.html", leveling(lang))
         for c in CLASSES:
             write(f"{lang}/class/{c['slug']}/index.html", class_page(lang, c))
             n += 1
