@@ -379,7 +379,8 @@ def home(lang):
 def zones_table(lang):
     t = T[lang]
     mx = max(z["exp"] for z in ZONES["zones"])
-    rows = "".join(f"""<tr><td style="font-weight:600">{e(z['name'][lang])}</td><td class="c2">{z['lvl']}</td><td class="c2 num">{z['hp']}</td>
+    gl = {"ua": "група", "en": "party", "ru": "группа"}[lang]
+    rows = "".join(f"""<tr><td style="font-weight:600">{e(z['name'][lang])}{f' <span class="tag" style="font-size:12px;font-weight:500;padding:2px 8px">{gl}</span>' if z.get('group') else ''}</td><td class="c2">{z['lvl']}</td><td class="c2 num">{z['hp']}</td>
 <td><div style="display:flex;align-items:center;gap:10px"><span style="width:44px;text-align:right">{z['exp']}</span><span class="bar"><i style="width:{round(100 * z['exp'] / mx)}%"></i></span></div></td>
 <td class="num">{z['adena'] if z['adena'] is not None else '—'}</td><td class="c2">{t['yes'] if z['book'] else '—'}</td></tr>""" for z in ZONES["zones"])
     return f"""<div class="tbl-wrap"><table style="min-width:560px"><thead><tr><th>{t['z_name']}</th><th>{t['z_lvl']}</th><th class="num">{t['z_hp']}</th><th>{t['z_exp']}</th><th class="num">{t['z_adena']}</th><th>{t['z_book']}</th></tr></thead><tbody>{rows}</tbody></table></div>"""
