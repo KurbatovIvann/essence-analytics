@@ -244,7 +244,7 @@ def page(lang, rel, key, path_in_lang, title, body, scripts=""):
     t = T[lang]
     nav = [("tiers", "", t["nav_tiers"]), ("classes", "#classes", t["nav_classes"]),
            ("compare", "compare/", t["nav_compare"]), ("zones", "zones/", t["nav_zones"]),
-           ("leveling", "leveling/", LT[lang]["nav"]), ("points", "points/", PT[lang]["nav"]),
+           ("leveling", "leveling/", LT[lang]["nav"]), ("points", "points/", PT[lang]["nav"]), ("shop", "shop/", ST[lang]["nav"]),
            ("meas", "measurements/", t["nav_meas"])]
     navh = "".join(
         f'<a href="{rel}{lang}/{h}"{" aria-current=\"page\"" if k == key else ""}>{e(lbl)}</a>' for k, h, lbl in nav)
@@ -685,6 +685,48 @@ a.addEventListener('mouseenter',function(ev){{if(!i.dataset.full){{i.dataset.ful
 a.addEventListener('mousemove',mv);a.addEventListener('mouseleave',function(){{a.classList.remove('zoom')}})}})}})();</script>"""
     return page(lang, rel, "points", "points/", pt["title"], body)
 
+# ---------------------------------------------------------------- shop by level
+SHOP = load("data/shop.json")
+ST = {
+ "ua": {"nav": "Покупки", "title": "Що купувати за рівнем", "lead": "Товари магазину за Монети L, які відкриваються з рівнем персонажа. Ліміт покупок — без обмежень.",
+  "lv": "рівень", "sum": "на рівні", "cum": "разом до цього рівня", "bought": "Куплено", "of": "з", "upd": "Оновлено", "names": "Назви — як у грі.", "mark": "Куплено"},
+ "en": {"nav": "Shop", "title": "What to buy by level", "lead": "L-Coin shop items that unlock with character level. No purchase limit.",
+  "lv": "level", "sum": "at this level", "cum": "total up to this level", "bought": "Bought", "of": "of", "upd": "Updated", "names": "Item names are as in the Russian game client.", "mark": "Bought"},
+ "ru": {"nav": "Покупки", "title": "Что покупать по уровню", "lead": "Товары магазина за Монеты L, которые открываются с уровнем персонажа. Лимит покупок — без ограничений.",
+  "lv": "уровень", "sum": "на уровне", "cum": "всего до этого уровня", "bought": "Куплено", "of": "из", "upd": "Обновлено", "names": "Названия — как в игре.", "mark": "Куплено"},
+}
+
+
+def shop(lang):
+    st, rel = ST[lang], "../../"
+    groups, order = {}, []
+    for it in SHOP["items"]:
+        if it["lvl"] not in groups:
+            groups[it["lvl"]] = []
+            order.append(it["lvl"])
+        groups[it["lvl"]].append(it)
+    total, cum, html_g = sum(i["price"] for i in SHOP["items"]), 0, ""
+    for lv in order:
+        g = groups[lv]
+        sub = sum(i["price"] for i in g)
+        cum += sub
+        rows = "".join(
+            f'<li class="sh-item"><img src="{rel}assets/img/shop/{i["id"]}.png" alt="" width="40" height="40" loading="lazy">'
+            f'<span class="sh-name">{e(i["name"])}</span><span class="sh-price">{num(i["price"], lang)} <i>L</i></span>'
+            f'<label class="sh-check"><input type="checkbox" data-sh="{i["id"]}" data-p="{i["price"]}" aria-label="{e(st["mark"])}: {e(i["name"])}"></label></li>'
+            for i in g)
+        html_g += (f'<section class="sh-lv"><header><span class="sh-badge">{lv}+</span>'
+                   f'<span class="muted small">{e(st["sum"])}: <b class="c2">{num(sub, lang)} L</b> · {e(st["cum"])}: <b class="gold">{num(cum, lang)} L</b></span></header>'
+                   f'<ul>{rows}</ul></section>')
+    body = f"""<section class="wrap sec"><h1>{e(st['title'])}</h1><p class="c2" style="margin:10px 0 0;max-width:820px">{e(st['lead'])}</p>
+<div class="strip" style="margin-top:16px"><span>{e(st['bought'])}: <strong id="sh-n">0</strong> L {e(st['of'])} {num(total, lang)} L</span><span class="muted">{e(st['upd'])} {SHOP['updated']} · {e(st['names'])}</span></div>
+<div class="sh">{html_g}</div></section>
+<script>(function(){{var K='shop-bought',s={{}};try{{s=JSON.parse(localStorage.getItem(K)||'{{}}')||{{}}}}catch(x){{}}
+var bs=document.querySelectorAll('[data-sh]'),n=document.getElementById('sh-n'),f=new Intl.NumberFormat('{HTML_LANG[lang]}');
+function upd(){{var c=0;bs.forEach(function(b){{if(b.checked)c+=+b.dataset.p;b.closest('.sh-item').classList.toggle('done',b.checked)}});n.textContent=f.format(c)}}
+bs.forEach(function(b){{b.checked=!!s[b.dataset.sh];b.addEventListener('change',function(){{s[b.dataset.sh]=b.checked;try{{localStorage.setItem(K,JSON.stringify(s))}}catch(x){{}}upd()}})}});upd()}})();</script>"""
+    return page(lang, rel, "shop", "shop/", st["title"], body)
+
 # ---------------------------------------------------------------- stream overlay (OBS browser source)
 OV_T = {"ua": ("Tier-лист · Стадія 1", "Прогноз до ОБТ"), "en": ("Tier list · Stage 1", "Pre-OBT forecast"),
         "ru": ("Тир-лист · Стадия 1", "Прогноз до ОБТ")}
@@ -785,6 +827,7 @@ def main():
         write(f"{lang}/overlay/index.html", overlay(lang))
         write(f"{lang}/leveling/index.html", leveling(lang))
         write(f"{lang}/points/index.html", points(lang))
+        write(f"{lang}/shop/index.html", shop(lang))
         for c in CLASSES:
             write(f"{lang}/class/{c['slug']}/index.html", class_page(lang, c))
             n += 1
