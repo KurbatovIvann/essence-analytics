@@ -241,7 +241,8 @@ def page(lang, rel, key, path_in_lang, title, body, scripts=""):
     t = T[lang]
     nav = [("tiers", "", t["nav_tiers"]), ("classes", "#classes", t["nav_classes"]),
            ("compare", "compare/", t["nav_compare"]), ("zones", "zones/", t["nav_zones"]),
-           ("leveling", "leveling/", LT[lang]["nav"]), ("meas", "measurements/", t["nav_meas"])]
+           ("leveling", "leveling/", LT[lang]["nav"]), ("points", "points/", PT[lang]["nav"]),
+           ("meas", "measurements/", t["nav_meas"])]
     navh = "".join(
         f'<a href="{rel}{lang}/{h}"{" aria-current=\"page\"" if k == key else ""}>{e(lbl)}</a>' for k, h, lbl in nav)
     langs = "".join(
@@ -628,6 +629,55 @@ def leveling(lang):
 <script id="lv-data" type="application/json">{json.dumps({"trials": LV["trials_mexp"], "lang": lang})}</script>"""
     return page(lang, rel, "leveling", "leveling/", lt["title"], body, f'<script src="{rel}assets/js/leveling.js" defer></script>')
 
+# ---------------------------------------------------------------- teleport points
+PTS = load("data/points.json")
+PT = {
+ "ua": {"nav": "Точки", "title": "Точки телепорту для квестів",
+  "lead": "Місця, де треба зберегти точки телепорту для квестових ланцюжків, у порядку проходження. Назва точки — код і локація, наприклад «Q01 Руины Страданий».",
+  "c_code": "Код", "c_lvl": "Рів.", "c_path": "Телепорт", "c_quest": "Квест", "c_kills": "Вбивств", "c_to": "Рівень після",
+  "path": "Телепорт → Территория", "mobs": "Моби", "saved": "Точку збережено", "open": "Відкрити скріншот",
+  "progress": "Збережено", "of": "з", "upd": "Оновлено", "names": "Назви локацій, квестів і мобів — як у грі."},
+ "en": {"nav": "Points", "title": "Teleport points for quests",
+  "lead": "Places to save teleport points for the quest chains, in the order you need them. Name each point with its code and zone, e.g. “Q01 Ruins of Agony”.",
+  "c_code": "Code", "c_lvl": "Lv", "c_path": "Teleport", "c_quest": "Quest", "c_kills": "Kills", "c_to": "Level after",
+  "path": "Teleport → Territory", "mobs": "Mobs", "saved": "Point saved", "open": "Open screenshot",
+  "progress": "Saved", "of": "of", "upd": "Updated", "names": "Quest and mob names are as in the Russian game client."},
+ "ru": {"nav": "Точки", "title": "Точки телепорта для квестов",
+  "lead": "Места, где нужно сохранить точки телепорта для квестовых цепочек, в порядке прохождения. Название точки — код и локация, например «Q01 Руины Страданий».",
+  "c_code": "Код", "c_lvl": "Ур.", "c_path": "Телепорт", "c_quest": "Квест", "c_kills": "Убийств", "c_to": "Уровень после",
+  "path": "Телепорт → Территория", "mobs": "Мобы", "saved": "Точка сохранена", "open": "Открыть скриншот",
+  "progress": "Сохранено", "of": "из", "upd": "Обновлено", "names": "Названия локаций, квестов и мобов — как в игре."},
+}
+
+
+def points(lang):
+    pt, rel = PT[lang], "../../"
+    zl = lambda p: p["zone"]["ru"] if lang == "ru" else f'{p["zone"]["ru"]} <span class="muted">· {e(p["zone"][lang])}</span>'
+    rows, cards = "", ""
+    for p in PTS["points"]:
+        c = p["code"].lower()
+        q = p["quests"][0]
+        rows += (f'<tr><td class="gold" style="font-weight:700">{p["code"]}</td><td class="num">{p["lvl"]}</td>'
+                 f'<td>{e(p["town"]["ru"])} → <b>{e(p["zone"]["ru"])}</b></td><td class="c2">{e(q[lang])}</td>'
+                 f'<td class="num c2">{e(q["kills"])}</td><td class="num c2">{q["to"] or "—"}</td></tr>')
+        cards += f"""<article class="pt" id="{c}">
+<a class="pt-img" href="{rel}assets/img/points/{c}.jpg" target="_blank" rel="noopener" aria-label="{e(pt['open'])}: {e(p['zone']['ru'])}"><img src="{rel}assets/img/points/{c}-s.jpg" alt="" width="720" height="390" loading="lazy"></a>
+<div class="pt-body"><div class="pt-head"><span class="pt-code">{p["code"]}</span><span class="pt-lvl">Lv {p["lvl"]}</span></div>
+<h3>{zl(p)}</h3>
+<p class="pt-path">{e(pt['path'])} → {e(p['town']['ru'])} → <b>{e(p['zone']['ru'].split(' — ')[0])}</b></p>
+<p class="small c2" style="margin:6px 0 0">{e(q[lang])} · {e(q['kills'])}{(' → ' + str(q['to'])) if q['to'] else ''}</p>
+<p class="small muted" style="margin:6px 0 0">{e(pt['mobs'])}: {e(p['mobs'])}</p>
+<label class="pt-check"><input type="checkbox" data-pt="{c}"> {e(pt['saved'])}</label></div></article>"""
+    body = f"""<section class="wrap sec"><h1>{e(pt['title'])}</h1><p class="c2" style="margin:10px 0 0;max-width:820px">{e(pt['lead'])}</p>
+<div class="strip" style="margin-top:16px"><span>{e(pt['progress'])}: <strong id="pt-n">0</strong> {e(pt['of'])} {len(PTS['points'])}</span><span class="muted">{e(pt['upd'])} {PTS['updated']} · {e(pt['names'])}</span></div>
+<div class="panel" style="margin-top:20px"><div class="tbl-wrap"><table style="min-width:860px;font-size:14px"><thead><tr><th>{pt['c_code']}</th><th class="num">{pt['c_lvl']}</th><th>{pt['c_path']}</th><th>{pt['c_quest']}</th><th class="num">{pt['c_kills']}</th><th class="num">{pt['c_to']}</th></tr></thead><tbody>{rows}</tbody></table></div></div>
+<div class="pts">{cards}</div></section>
+<script>(function(){{var K='pts-saved',s={{}};try{{s=JSON.parse(localStorage.getItem(K)||'{{}}')||{{}}}}catch(x){{}}
+var bs=document.querySelectorAll('[data-pt]'),n=document.getElementById('pt-n');
+function upd(){{var c=0;bs.forEach(function(b){{if(b.checked)c++;b.closest('.pt').classList.toggle('done',b.checked)}});n.textContent=c}}
+bs.forEach(function(b){{b.checked=!!s[b.dataset.pt];b.addEventListener('change',function(){{s[b.dataset.pt]=b.checked;try{{localStorage.setItem(K,JSON.stringify(s))}}catch(x){{}}upd()}})}});upd()}})();</script>"""
+    return page(lang, rel, "points", "points/", pt["title"], body)
+
 # ---------------------------------------------------------------- stream overlay (OBS browser source)
 OV_T = {"ua": ("Tier-лист · Стадія 1", "Прогноз до ОБТ"), "en": ("Tier list · Stage 1", "Pre-OBT forecast"),
         "ru": ("Тир-лист · Стадия 1", "Прогноз до ОБТ")}
@@ -727,6 +777,7 @@ def main():
         write(f"{lang}/measurements/index.html", measurements(lang))
         write(f"{lang}/overlay/index.html", overlay(lang))
         write(f"{lang}/leveling/index.html", leveling(lang))
+        write(f"{lang}/points/index.html", points(lang))
         for c in CLASSES:
             write(f"{lang}/class/{c['slug']}/index.html", class_page(lang, c))
             n += 1
