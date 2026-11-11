@@ -142,7 +142,7 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .pt-img{display:block;background:var(--chip);aspect-ratio:720/390;overflow:hidden}
 .pt-img img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .15s ease-out}
 @media (any-hover:hover){.pt-img{cursor:zoom-in}}
-.pt-img.zoom img{transform:scale(2.6)}
+.pt-img.zoom img{transform:scale(4)}
 .pt-body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
 .pt-head{display:flex;gap:8px;align-items:center}
 .pt-code{font-family:Cinzel,serif;font-weight:700;color:var(--on-gold);background:var(--gold);border-radius:6px;padding:2px 8px;font-size:15px}
