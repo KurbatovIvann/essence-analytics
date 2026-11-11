@@ -673,7 +673,6 @@ def points(lang):
 <label class="pt-check"><input type="checkbox" data-pt="{c}"> {e(pt['saved'])}</label></div></article>"""
     body = f"""<section class="wrap sec"><h1>{e(pt['title'])}</h1><p class="c2" style="margin:10px 0 0;max-width:820px">{e(pt['lead'])}</p>
 <div class="strip" style="margin-top:16px"><span>{e(pt['progress'])}: <strong id="pt-n">0</strong> {e(pt['of'])} {len(PTS['points'])}</span><span class="muted">{e(pt['upd'])} {PTS['updated']} · {e(pt['names'])}</span></div>
-<div class="panel" style="margin-top:20px"><div class="tbl-wrap"><table style="min-width:860px;font-size:14px"><thead><tr><th>{pt['c_code']}</th><th class="num">{pt['c_lvl']}</th><th>{pt['c_path']}</th><th>{pt['c_quest']}</th><th class="num">{pt['c_kills']}</th><th class="num">{pt['c_to']}</th></tr></thead><tbody>{rows}</tbody></table></div></div>
 <div class="pts">{cards}</div></section>
 <script>(function(){{var K='pts-saved',s={{}};try{{s=JSON.parse(localStorage.getItem(K)||'{{}}')||{{}}}}catch(x){{}}
 var bs=document.querySelectorAll('[data-pt]'),n=document.getElementById('pt-n');
