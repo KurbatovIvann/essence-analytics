@@ -675,7 +675,12 @@ def points(lang):
 <script>(function(){{var K='pts-saved',s={{}};try{{s=JSON.parse(localStorage.getItem(K)||'{{}}')||{{}}}}catch(x){{}}
 var bs=document.querySelectorAll('[data-pt]'),n=document.getElementById('pt-n');
 function upd(){{var c=0;bs.forEach(function(b){{if(b.checked)c++;b.closest('.pt').classList.toggle('done',b.checked)}});n.textContent=c}}
-bs.forEach(function(b){{b.checked=!!s[b.dataset.pt];b.addEventListener('change',function(){{s[b.dataset.pt]=b.checked;try{{localStorage.setItem(K,JSON.stringify(s))}}catch(x){{}}upd()}})}});upd()}})();</script>"""
+bs.forEach(function(b){{b.checked=!!s[b.dataset.pt];b.addEventListener('change',function(){{s[b.dataset.pt]=b.checked;try{{localStorage.setItem(K,JSON.stringify(s))}}catch(x){{}}upd()}})}});upd();
+if(!matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+document.querySelectorAll('.pt-img').forEach(function(a){{var i=a.querySelector('img');
+function mv(ev){{var r=a.getBoundingClientRect();i.style.transformOrigin=((ev.clientX-r.left)/r.width*100)+'% '+((ev.clientY-r.top)/r.height*100)+'%'}}
+a.addEventListener('mouseenter',function(ev){{if(!i.dataset.full){{i.dataset.full=1;i.src=a.href}}mv(ev);a.classList.add('zoom')}});
+a.addEventListener('mousemove',mv);a.addEventListener('mouseleave',function(){{a.classList.remove('zoom')}})}})}})();</script>"""
     return page(lang, rel, "points", "points/", pt["title"], body)
 
 # ---------------------------------------------------------------- stream overlay (OBS browser source)
