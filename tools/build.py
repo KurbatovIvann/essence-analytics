@@ -237,6 +237,9 @@ AGG, SPOT_AVG = farm_agg()
 
 
 # ---------------------------------------------------------------- layout
+CSS_V = __import__("hashlib").md5(open(os.path.join(ROOT, "assets/css/site.css"), "rb").read()).hexdigest()[:8]
+
+
 def page(lang, rel, key, path_in_lang, title, body, scripts=""):
     t = T[lang]
     nav = [("tiers", "", t["nav_tiers"]), ("classes", "#classes", t["nav_classes"]),
@@ -262,7 +265,7 @@ def page(lang, rel, key, path_in_lang, title, body, scripts=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{rel}assets/css/site.css">
+<link rel="stylesheet" href="{rel}assets/css/site.css?v={CSS_V}">
 </head>
 <body>
 <header class="site-head">
@@ -676,7 +679,7 @@ def points(lang):
 var bs=document.querySelectorAll('[data-pt]'),n=document.getElementById('pt-n');
 function upd(){{var c=0;bs.forEach(function(b){{if(b.checked)c++;b.closest('.pt').classList.toggle('done',b.checked)}});n.textContent=c}}
 bs.forEach(function(b){{b.checked=!!s[b.dataset.pt];b.addEventListener('change',function(){{s[b.dataset.pt]=b.checked;try{{localStorage.setItem(K,JSON.stringify(s))}}catch(x){{}}upd()}})}});upd();
-if(!matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+if(!matchMedia('(any-hover:hover)').matches)return;
 document.querySelectorAll('.pt-img').forEach(function(a){{var i=a.querySelector('img');
 function mv(ev){{var r=a.getBoundingClientRect();i.style.transformOrigin=((ev.clientX-r.left)/r.width*100)+'% '+((ev.clientY-r.top)/r.height*100)+'%'}}
 a.addEventListener('mouseenter',function(ev){{if(!i.dataset.full){{i.dataset.full=1;i.src=a.href}}mv(ev);a.classList.add('zoom')}});
