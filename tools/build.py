@@ -655,7 +655,7 @@ PT = {
 
 def points(lang):
     pt, rel = PT[lang], "../../"
-    zl = lambda p: f'<span class="pt-town">{e(p["town"]["ru"])} –</span> ' + (e(p["zone"]["ru"]) if lang == "ru" else f'{e(p["zone"]["ru"])} <span class="muted">· {e(p["zone"][lang])}</span>')
+    zl = lambda p: f'<span class="pt-town">{e(p["town"]["ru"])} –</span> ' + e(p["zone"]["ru"])
     items = ""
     for p in PTS["points"]:
         c = p["code"].lower()
