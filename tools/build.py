@@ -638,51 +638,51 @@ PT = {
  "ua": {"nav": "Точки", "title": "Точки телепорту для квестів",
   "lead": "Місця, де треба зберегти точки телепорту для квестових ланцюжків, у порядку проходження. Назва точки — код і локація, наприклад «Q01 Руины Страданий».",
   "c_code": "Код", "c_lvl": "Рів.", "c_path": "Телепорт", "c_quest": "Квест", "c_kills": "Вбивств", "c_to": "Рівень після",
-  "path": "Телепорт → Территория", "mobs": "Моби", "saved": "Точку збережено", "open": "Відкрити скріншот",
+  "path": "Телепорт → Территория", "mobs": "Моби", "saved": "Точку збережено", "close": "Закрити", "open": "Відкрити скріншот",
   "progress": "Збережено", "of": "з", "upd": "Оновлено", "names": "Назви локацій, квестів і мобів — як у грі."},
  "en": {"nav": "Points", "title": "Teleport points for quests",
   "lead": "Places to save teleport points for the quest chains, in the order you need them. Name each point with its code and zone, e.g. “Q01 Ruins of Agony”.",
   "c_code": "Code", "c_lvl": "Lv", "c_path": "Teleport", "c_quest": "Quest", "c_kills": "Kills", "c_to": "Level after",
-  "path": "Teleport → Territory", "mobs": "Mobs", "saved": "Point saved", "open": "Open screenshot",
+  "path": "Teleport → Territory", "mobs": "Mobs", "saved": "Point saved", "close": "Close", "open": "Open screenshot",
   "progress": "Saved", "of": "of", "upd": "Updated", "names": "Quest and mob names are as in the Russian game client."},
  "ru": {"nav": "Точки", "title": "Точки телепорта для квестов",
   "lead": "Места, где нужно сохранить точки телепорта для квестовых цепочек, в порядке прохождения. Название точки — код и локация, например «Q01 Руины Страданий».",
   "c_code": "Код", "c_lvl": "Ур.", "c_path": "Телепорт", "c_quest": "Квест", "c_kills": "Убийств", "c_to": "Уровень после",
-  "path": "Телепорт → Территория", "mobs": "Мобы", "saved": "Точка сохранена", "open": "Открыть скриншот",
+  "path": "Телепорт → Территория", "mobs": "Мобы", "saved": "Точка сохранена", "close": "Закрыть", "open": "Открыть скриншот",
   "progress": "Сохранено", "of": "из", "upd": "Обновлено", "names": "Названия локаций, квестов и мобов — как в игре."},
 }
 
 
 def points(lang):
     pt, rel = PT[lang], "../../"
-    zl = lambda p: p["zone"]["ru"] if lang == "ru" else f'{p["zone"]["ru"]} <span class="muted">· {e(p["zone"][lang])}</span>'
-    rows, cards = "", ""
+    zl = lambda p: e(p["zone"]["ru"]) if lang == "ru" else f'{e(p["zone"]["ru"])} <span class="muted">· {e(p["zone"][lang])}</span>'
+    items = ""
     for p in PTS["points"]:
         c = p["code"].lower()
         q = p["quests"][0]
-        rows += (f'<tr><td class="gold" style="font-weight:700">{p["code"]}</td><td class="num">{p["lvl"]}</td>'
-                 f'<td>{e(p["town"]["ru"])} → <b>{e(p["zone"]["ru"])}</b></td><td class="c2">{e(q[lang])}</td>'
-                 f'<td class="num c2">{e(q["kills"])}</td><td class="num c2">{q["to"] or "—"}</td></tr>')
-        cards += f"""<article class="pt" id="{c}">
-<a class="pt-img" href="{rel}assets/img/points/{c}.jpg" target="_blank" rel="noopener" aria-label="{e(pt['open'])}: {e(p['zone']['ru'])}"><img src="{rel}assets/img/points/{c}-s.jpg" alt="" width="720" height="390" loading="lazy"></a>
-<div class="pt-body"><div class="pt-head"><span class="pt-code">{p["code"]}</span><span class="pt-lvl">Lv {p["lvl"]}</span></div>
+        items += f"""<li class="ptl-i" id="{c}">
+<div class="ptl-rail"><span class="pt-code">{p["code"]}</span></div>
+<div class="ptl-card"><div class="ptl-text">
+<div class="pt-head"><span class="pt-lvl">Lv {p["lvl"]}</span><span class="pt-path">{e(pt['path'])} → {e(p['town']['ru'])} → <b>{e(p['zone']['ru'].split(' — ')[0])}</b></span></div>
 <h3>{zl(p)}</h3>
-<p class="pt-path">{e(pt['path'])} → {e(p['town']['ru'])} → <b>{e(p['zone']['ru'].split(' — ')[0])}</b></p>
-<p class="small c2" style="margin:6px 0 0">{e(q[lang])} · {e(q['kills'])}{(' → ' + str(q['to'])) if q['to'] else ''}</p>
+<p class="c2 small" style="margin:8px 0 0">{e(q[lang])} · <b class="num">{e(q['kills'])}</b>{(' → ' + str(q['to'])) if q['to'] else ''}</p>
 <p class="small muted" style="margin:6px 0 0">{e(pt['mobs'])}: {e(p['mobs'])}</p>
-<label class="pt-check"><input type="checkbox" data-pt="{c}"> {e(pt['saved'])}</label></div></article>"""
+<label class="pt-check"><input type="checkbox" data-pt="{c}"> {e(pt['saved'])}</label></div>
+<button type="button" class="ptl-img" data-full="{rel}assets/img/points/{c}.jpg" data-cap="{p['code']} · {e(p['zone']['ru'])}" aria-label="{e(pt['open'])}: {e(p['zone']['ru'])}"><img src="{rel}assets/img/points/{c}-s.jpg" alt="" width="720" height="390" loading="lazy"></button>
+</div></li>"""
     body = f"""<section class="wrap sec"><h1>{e(pt['title'])}</h1><p class="c2" style="margin:10px 0 0;max-width:820px">{e(pt['lead'])}</p>
 <div class="strip" style="margin-top:16px"><span>{e(pt['progress'])}: <strong id="pt-n">0</strong> {e(pt['of'])} {len(PTS['points'])}</span><span class="muted">{e(pt['upd'])} {PTS['updated']} · {e(pt['names'])}</span></div>
-<div class="pts">{cards}</div></section>
+<ol class="ptl">{items}</ol></section>
+<dialog class="ptm" id="ptm" aria-label="{e(pt['open'])}"><div class="ptm-box"><div class="ptm-bar"><span id="ptm-cap"></span><button type="button" class="ptm-x" id="ptm-x" aria-label="{e(pt['close'])}">×</button></div><img id="ptm-img" alt=""></div></dialog>
 <script>(function(){{var K='pts-saved',s={{}};try{{s=JSON.parse(localStorage.getItem(K)||'{{}}')||{{}}}}catch(x){{}}
 var bs=document.querySelectorAll('[data-pt]'),n=document.getElementById('pt-n');
-function upd(){{var c=0;bs.forEach(function(b){{if(b.checked)c++;b.closest('.pt').classList.toggle('done',b.checked)}});n.textContent=c}}
+function upd(){{var c=0;bs.forEach(function(b){{if(b.checked)c++;b.closest('.ptl-i').classList.toggle('done',b.checked)}});n.textContent=c}}
 bs.forEach(function(b){{b.checked=!!s[b.dataset.pt];b.addEventListener('change',function(){{s[b.dataset.pt]=b.checked;try{{localStorage.setItem(K,JSON.stringify(s))}}catch(x){{}}upd()}})}});upd();
-if(!matchMedia('(any-hover:hover)').matches)return;
-document.querySelectorAll('.pt-img').forEach(function(a){{var i=a.querySelector('img');
-function mv(ev){{var r=a.getBoundingClientRect();i.style.transformOrigin=((ev.clientX-r.left)/r.width*100)+'% '+((ev.clientY-r.top)/r.height*100)+'%'}}
-a.addEventListener('mouseenter',function(ev){{if(!i.dataset.full){{i.dataset.full=1;i.src=a.href}}mv(ev);a.classList.add('zoom')}});
-a.addEventListener('mousemove',mv);a.addEventListener('mouseleave',function(){{a.classList.remove('zoom')}})}})}})();</script>"""
+var d=document.getElementById('ptm'),im=document.getElementById('ptm-img'),cap=document.getElementById('ptm-cap');
+document.querySelectorAll('.ptl-img').forEach(function(b){{b.addEventListener('click',function(){{im.src=b.dataset.full;cap.textContent=b.dataset.cap;d.showModal()}})}});
+document.getElementById('ptm-x').addEventListener('click',function(){{d.close()}});
+d.addEventListener('click',function(ev){{if(ev.target===d)d.close()}});
+d.addEventListener('close',function(){{im.removeAttribute('src')}})}})();</script>"""
     return page(lang, rel, "points", "points/", pt["title"], body)
 
 # ---------------------------------------------------------------- shop by level

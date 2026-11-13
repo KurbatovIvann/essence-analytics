@@ -135,24 +135,37 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 }
 
 /* teleport points */
-.pts{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;margin-top:20px}
-.pt{border:1px solid var(--line);border-radius:14px;background:var(--panel);overflow:hidden;display:flex;flex-direction:column}
-.pt.done{border-color:var(--warn-line)}
-.pt.done .pt-img img{opacity:.55}
-.pt-img{display:block;background:var(--chip);aspect-ratio:720/390;overflow:hidden}
-.pt-img img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .15s ease-out}
-@media (any-hover:hover){.pt-img{cursor:zoom-in}}
-.pt-img.zoom img{transform:scale(4)}
-.pt-body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
-.pt-head{display:flex;gap:8px;align-items:center}
-.pt-code{font-family:Cinzel,serif;font-weight:700;color:var(--on-gold);background:var(--gold);border-radius:6px;padding:2px 8px;font-size:15px}
-.pt-lvl{font-size:13px;color:var(--muted);border:1px solid var(--line-4);border-radius:6px;padding:2px 8px}
-.pt h3{margin:10px 0 0;font-size:17px;line-height:1.35}
-.pt h3 .muted{font-weight:500;font-size:14px}
-.pt-path{margin:8px 0 0;font-size:14px;color:var(--text-2)}
-.pt-check{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:12px;min-height:44px;font-size:14px;cursor:pointer;color:var(--text-2)}
+.ptl{list-style:none;margin:24px 0 0;padding:0;max-width:1100px;position:relative}
+.ptl-i{display:grid;grid-template-columns:64px 1fr;gap:0 16px;position:relative}
+.ptl-rail{position:relative;display:flex;justify-content:center}
+.ptl-rail::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;margin-left:-1px;background:var(--line-4)}
+.ptl-i:first-child .ptl-rail::before{top:22px}
+.ptl-i:last-child .ptl-rail::before{bottom:auto;height:22px}
+.ptl-rail .pt-code{position:relative;margin-top:10px;align-self:flex-start}
+.pt-code{font-family:Cinzel,serif;font-weight:700;color:var(--on-gold);background:var(--gold);border-radius:6px;padding:3px 8px;font-size:15px;line-height:1.4}
+.ptl-i.done .ptl-rail .pt-code{background:var(--chip);color:var(--dim);box-shadow:inset 0 0 0 1px var(--line-4)}
+.ptl-card{display:grid;grid-template-columns:1fr 320px;gap:16px;align-items:start;border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:14px 14px 14px 18px;margin-bottom:14px}
+.ptl-i.done .ptl-card{opacity:.6}
+.pt-head{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.pt-lvl{font-size:13px;color:var(--muted);border:1px solid var(--line-4);border-radius:6px;padding:1px 8px;white-space:nowrap}
+.pt-path{font-size:14px;color:var(--text-2)}
+.ptl-text h3{margin:8px 0 0;font-size:18px;line-height:1.35}
+.ptl-text h3 .muted{font-weight:500;font-size:14px}
+.pt-check{display:inline-flex;align-items:center;gap:10px;margin-top:8px;min-height:44px;font-size:14px;cursor:pointer;color:var(--text-2)}
 .pt-check input{width:20px;height:20px;accent-color:var(--gold)}
-@media (max-width:420px){.pts{grid-template-columns:1fr}}
+.ptl-img{display:block;padding:0;border:1px solid var(--frame);border-radius:10px;overflow:hidden;background:var(--chip);cursor:zoom-in;aspect-ratio:720/390;width:100%}
+.ptl-img img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .2s ease-out}
+.ptl-img:hover img{transform:scale(1.04)}
+.ptl-img:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.ptm{padding:0;border:0;background:transparent;max-width:none;max-height:none;width:100vw;height:100vh;margin:0}
+.ptm[open]{display:flex;align-items:center;justify-content:center}
+.ptm::backdrop{background:rgba(0,0,0,.82)}
+.ptm-box{max-width:min(1600px,96vw);background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.ptm-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 6px 6px 14px;font-weight:600;color:var(--text)}
+.ptm-x{width:44px;height:44px;border:0;border-radius:8px;background:var(--chip);color:var(--text);font-size:26px;line-height:1;cursor:pointer}
+.ptm-x:hover{background:var(--line-4)}
+.ptm img{display:block;max-width:100%;max-height:calc(100vh - 90px);width:auto;height:auto;margin:0 auto}
+@media (max-width:760px){.ptl-i{grid-template-columns:44px 1fr;gap:0 10px}.ptl-card{grid-template-columns:1fr;padding:12px}.ptl-rail .pt-code{font-size:12px;padding:2px 5px}}
 
 /* shop by level */
 .sh{display:flex;flex-direction:column;gap:14px;margin-top:20px;max-width:860px}
