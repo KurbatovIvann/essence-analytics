@@ -151,6 +151,7 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .pt-path{font-size:14px;color:var(--text-2)}
 .ptl-text h3{margin:8px 0 0;font-size:18px;line-height:1.35}
 .ptl-text h3 .muted{font-weight:500;font-size:14px}
+.pt-town{color:var(--text-2);font-weight:600}
 .pt-check{display:inline-flex;align-items:center;gap:10px;margin-top:8px;min-height:44px;font-size:14px;cursor:pointer;color:var(--text-2)}
 .pt-check input{width:20px;height:20px;accent-color:var(--gold)}
 .ptl-img{display:block;padding:0;border:1px solid var(--frame);border-radius:10px;overflow:hidden;background:var(--chip);cursor:zoom-in;aspect-ratio:720/390;width:100%}
